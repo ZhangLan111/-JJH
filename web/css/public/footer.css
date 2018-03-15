@@ -1,0 +1,39 @@
+
+.footer{
+    width:100%;
+    clear:both;
+    background-color: #008149;
+    overflow: hidden;
+}
+.footer-wrap{
+    width:990px;
+    margin:0 auto;
+    margin-top: 40px;
+    color:#EDF5EF;
+    font-size:13px;
+    text-align:center;
+}
+.f-h2,.f-div1,.f-div2{
+	float: left;
+	text-align:left;
+}
+.f-h2{
+	padding-left:30px;
+}
+.f-divl{
+	margin-left:36px;
+	margin-right:36px;
+	padding-left:50px;
+	padding-right:50px;
+	border-left:2px solid #8AB39C;
+	border-right:2px solid #8AB39C;
+}
+.f-div1 p,.f-div2 p{
+	line-height:30px;
+}
+.copy{
+	clear:left;
+	padding-top:30px;
+	padding-bottom:30px;
+	color:#8AB39C;
+}

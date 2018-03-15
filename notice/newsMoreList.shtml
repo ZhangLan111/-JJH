@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>新闻列表</title>
+    <link rel="stylesheet" type="text/css" href="/static/system/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/system/easyui/themes/icon.css">
+    <link rel="stylesheet" href="/static/system/css/news.css" />
+    <script type="text/javascript" src="/static/system/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/system/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/system/easyui/easyui-lang-zh_CN.js"></script>
+</head>
+<body id="bg-wrap">
+<div id="header">
+    <div class="wrap">
+        <div class="logo"></div>
+    </div>
+</div>
+<div id="c-w" class="float-wrapper">
+    <div class="title">
+        <span class="i-home"></span> <a href="/login.shtml">首页</a> <span class="i-arrow"></span> <a href="#">新闻列表</a> <a href="/login.shtml" class="r-l">返回首页</a>
+    </div>
+    <div class="c" id="news_body">
+        <table id="winDataList" class="easyui-datagrid" style="height: 560px;width: 100%" data-options="cache:false,url:'/system/notice/noticList.do?module_id=2',fitColumns:true,singleSelect:true,rownumbers:true,pagination:true,pageSize:20,
+        onClickRow:function(rowIndex,rowData){return window.location.href='/system/notice/news.shtml?id='+rowData.notice_id;},rowStyler:function(index,row){return 'cursor:pointer'}">
+            <thead>
+                <tr>
+                    <th data-options="field:'notice_title',width:210">通知标题</th>
+                    <th data-options="field:'puser_time',width:80,align:'center'">发布时间</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div class="line" style="margin-top: 20px;"></div>
+<div id="footer">
+    版权所有:重庆市社会科学界联合会 	版本：1.01
+</div>
+</body>
+<style>
+    /*.datagrid-row {*/
+        /*height: 34px;*/
+    /*}*/
+</style>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,1029 @@
+<!--我要捐赠-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重邮教育基金会</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="重庆,邮电,大学,cqupt,捐赠" name="Keywords">
+    <meta name="description" content="重庆邮电大学教育基金会是2012年8月31日经重庆市教委批准，于2012年11月9日经重庆市民政局登记注册成立的全国性非公募基金会">
+    <link rel="stylesheet" href="../css/public/reset.css">
+    <link rel="stylesheet" href="../css/public/header.css">
+    <link rel="stylesheet" href="../css/connent/donationGuide.css">
+    <link rel="stylesheet" href="../css/public/footer.css">
+
+</head>
+<body>
+<!--#include virtual="/jjh/web/public/need_top.html"-->
+<div class="main">
+    <div class="main-wrap">
+        <div class="smallbg"><img src="../img/donationGuide/bg-tip.jpg" alt=""></div>
+        <p class="title">捐赠指南</p>
+
+        <div class="donationDetail far1">
+            <div class="txtDescrip">
+                <p class="detailTitle">我要捐赠</p>
+                <br>
+
+                <p>重庆邮电大学教育基金会非常感谢您的捐赠！我们将如实记录、公示每一笔善款。</p>
+                <br><br>
+
+                <p>注意：在您进行捐赠之前，请先完善以下个人信息。为确保我们能顺利联系上您，带<span style="color: red;font-size:20px">*</span>的方框内容为必填内容</p>
+            </div>
+            <div class="option-jz">
+                <ul>
+                    <li class="option-active personal-jz">个人捐赠</li>
+                    <li class="group-jz">团体捐赠</li>
+                    <li class="company-jz">公司捐赠</li>
+                </ul>
+            </div>
+            <div class="donationForm on">
+                <form id="form">
+                    <table>
+                        <tr>
+                            <td class="op-title">是否匿名&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                            <td>
+                                <input name="visible" class="personal-nm" type="radio" value="1" data-value="匿名">&nbsp;&nbsp;&nbsp;&nbsp;是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input name="visible" class="personal-nm" type="radio" value="0" data-value="不匿名" checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;否
+                            </td>
+                        </tr>
+                        <tbody class="nm-content">
+                            <tr class="form-first">
+                                <td class="op-title"><span class="form-name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>
+                                <td><input type="text" placeholder="请填写您的姓名" name="personName" class="perverifi personal-user mustwrite" data-perverifi="perxingming"></span></td>
+                            </tr>
+                            <tr class="form-second">
+                                <td class="op-title">电子邮箱<span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>
+                                <td><input type="text" placeholder="请填写您的电子邮箱" name="personEmail" class="perverifi personal-email mustwrite" data-perverifi="peremail"></td>
+                            </tr>
+                            <tr>
+                                <td class="op-title">联系电话&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                                <td><input type="text" placeholder="请填写您的联系电话" name="phone" class="perverifi personal-phone"></td>
+                            </tr>
+                            <tr class="form-third">
+                                <td class="op-title"><span class="form-name2"> 身份证号</span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                                <td><input type="text" placeholder="请填写您的身份证号" name="idcard" class="perverifi personal-shenfenzheng"></td>
+                            </tr>
+                            <tr>
+                                <td class="op-title">联系地址&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                                <td><input type="text" name="address" class="personal-space" placeholder="请填写您的联系地址"></td>
+                            </tr>
+                            <tr>
+                                <td class="op-title">是否校友&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                                <td>
+                                    <input type="radio" name="isclassmate" class="personal-school" value="1" data-value="校友" checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input name="isclassmate" class="personal-school" type="radio" data-value="不是校友" value="0">&nbsp;&nbsp;&nbsp;&nbsp;否
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="op-title">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                                <td><input name="grade" class="personal-grade" type="text" placeholder="请填写您的年级"></td>
+                            </tr>
+                            <tr>
+                                <td class="op-title">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                                <td><input name="academy" class="personal-xueyuan" type="text" placeholder="请填写您的学校"></td>
+                            </tr>
+                        </tbody>
+                        <tr class="donationMoney">
+                            <td class="op-title">捐赠金额<span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>
+                            <td>
+                                <input type="radio" value="10" name="money" checked="checked">&nbsp;&nbsp;0.01
+                                <input type="radio" value="50" name="money" style="margin-left: 10px">&nbsp;&nbsp;50
+                                <input type="radio" value="100" name="money" style="margin-left: 10px">&nbsp;&nbsp;100
+                                <input type="radio" value="0" name="money" id="perdonatorMoney" style="margin-left: 10px">&nbsp;&nbsp;其他
+                            </td>
+                        </tr>
+                        <tr class="personal-money" style="display: none">
+                            <td></td>
+                            <td><input name="setmoney" class="personal-money2 mustwrite" type="text" placeholder="请填写您的捐赠金额" style="width: 255px;" maxlength="6"></td>
+                        </tr>
+                        <tr class="donationProject">
+                            <td class="op-title">捐赠项目&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                            <td>
+                                <select class="personal-project project-txt jzxx-dl" style="height: 38px;margin-left:10px; width: 80px;"></select>
+                                <select name="projectid" class="personal-project-txt project-txt jzxx-xl" style="height: 38px;margin-left:10px; width: 178px;"></select>
+                            </td>
+                        </tr>
+                        <tr class="donationWays">
+                            <td class="op-title">捐赠途径&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                            <td>
+                                <input name="paytype" class="personal-jztz" type="radio" checked="checked" value="1" data-value="在线支付">微信支付
+                            </td>
+                            <td>
+                                <input name="paytype" class="personal-jztz" type="radio" value="3" data-value="在线支付">支付宝
+                            </td>
+                        </tr>
+                        <input type="hidden" class="type" name="type" value="1">
+                    </table>
+                    <p class="form-btn perform-btn">提&nbsp;&nbsp;&nbsp;&nbsp;交</p>
+
+                </form>
+
+            </div>
+
+
+            <div class="clearfix"></div>
+
+        </div>
+
+
+        <div class="donationDetail far">
+            <p class="detailTitle">捐赠方法</p>
+
+            <p class="smallTitle">一、网上捐赠：</p>
+
+            <div class="method">
+                <p>重庆邮电大学教育基金会已开通三种在线支付方式:支付宝转账、微信转账、网上银行支付 </p></div>
+
+            <p class="smallTitle">二、银行转帐：</p>
+
+            <div class="method">
+                <p>开户行：中国农业银行重庆市分行南山支行 </p>
+
+                <p>帐号：31060701040004251  </p>
+
+                <p>（在捐赠后，请将您个人联系方式和转帐存根传真至023-62471900 ）</p>
+            </div>
+
+            <p class="smallTitle">三、（现场）捐赠联系人及联系方式：</p>
+
+            <div class="method">
+                <p>重庆邮电大学教育基金会 夏晨燕 </p>
+
+                <p>地  址：重庆市南岸区崇文路2号新行政楼1017室 </p>
+
+                <p>电  话：023-62471900 </p>
+
+                <p>传  真：023-62471900</p>
+
+                <p>Email：xiacy@cqupt.edu.cn</p>
+                <br>
+            </div>
+
+        </div>
+
+    </div>
+
+    <img src="../img/donationGuide/bg.png" class="main-bg">
+</div>
+
+<div class="clearfix"></div>
+<!-- 全局弹窗样式 -->
+<div class="mask">
+    <div class="mask-wrap"></div>
+    <div class="showtext">
+        <h1>提示</h1>
+
+        <p class="showsay">
+
+        </p>
+
+        <div class="close">关闭</div>
+    </div>
+</div>
+
+<div class="information-wrap" style="display: none">
+    <div class="information-bg"></div>
+    <div class="information">
+        <div class="information-title">
+            <a href="#" class="information-closed">x</a>
+
+            <h2>核实您的以下信息</h2>
+        </div>
+        <div class="information-content">
+        </div>
+    </div>
+</div>
+
+<div class="ma" style="display: none">
+    <div class="ma-bg"></div>
+    <div class="ma-wrap">
+        <div class="ma-title">二维码<span class="ma-close">x</span></div>
+        <div class="ma-content">
+
+        </div>
+    </div>
+</div>
+
+<!--#include  virtual="/jjh/web/public/need_deep.html" -->
+<script type="text/javascript" src="../js/iframe/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/connent/nav.js"></script>
+<script type="text/javascript" src="../js/jquery.form.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/jjh/front/projectList.do",
+            dataType: "json",
+            success: function (data) {
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].pid == 1) {
+                        $(".jzxx-dl").append("<option data-id=" + data[i].project_id + ">" + data[i].name + "</option>")
+                    }
+                }
+
+                $.ajax({
+                    type: "get",
+                    url: "/jjh/front/projectList.do" + "?projectId=" + $(".jzxx-dl option:checked").attr("data-id"),
+                    success: function (data) {
+                        $(".jzxx-xl").html();
+                        for (i = 0; i < data.length; i++) {
+                            $(".jzxx-xl").append("<option data-id=" + data[i].project_id + ">" + data[i].name + "</option>");
+                        }
+                    },
+                    error: function () {
+                        $(".mask .showsay").html("网络错误");
+                        $(".mask").show();
+                    }
+                });
+
+            },
+            erro: function () {
+                $(".mask .showsay").html("网络错误")
+                $(".mask").show()
+            }
+        });
+
+        $(".ma-bg").css("height", $(window).height());
+
+    })
+
+    //捐赠金额，点击其他，出现金额输入框
+    $("input[name='money']").click(function () {
+        if ($(this).attr("id") == "perdonatorMoney") {
+            $(".personal-money").show();
+        }
+        else {
+            $(".personal-money").hide();
+        }
+    })
+
+    //点击是否匿名，切换表单
+    function nmTab() {
+        $("input[name='visible']").click(function () {
+            CheckPersonName = true;
+            CheckPersonEmail = true;
+            CheckGroupName = true;
+            CheckGroupEmail = true;
+            CheckGroupLinkName = true;
+            CheckCompanyName = true;
+            CheckCompanyEmail = true;
+            CheckCompanyLinkMan = true;
+            if ($(this).val() == 0) {
+                if ($(".type").val() == 1) {
+                    $(".nm-content").html(
+                            '<tr class="form-first">' +
+                            '<td class="op-title"><span class="form-name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的姓名" name="personName" class="perverifi personal-user mustwrite" data-perverifi = "perxingming"></td>' +
+                            '</tr>' +
+                            '<tr class="form-second">' +
+                            '<td class="op-title">电子邮箱<span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的电子邮箱" name="personEmail" class="perverifi personal-email mustwrite" data-perverifi = "peremail"></td>' +
+                            '</tr>' +
+                            '<tr class="form-third">' +
+                            '<td class="op-title"><span class="form-name2"> 身份证号&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的身份证号" name="idcard" class="perverifi personal-shenfenzheng"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">联系电话&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的联系电话" name="phone" class="perverifi personal-phone"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">联系地址&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" name="address" class="personal-space" placeholder="请填写您的联系地址"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">是否校友&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="radio" name="isclassmate" class="personal-school" value="1" data-value="校友" checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="isclassmate" class="personal-school" type="radio" data-value="不是校友" value="0">&nbsp;&nbsp;&nbsp;&nbsp;否</td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input name="grade" class="personal-grade" type="text" placeholder="请填写您的年级"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input name="academy" class="personal-xueyuan" type="text" placeholder="请填写您的学校"></td></tr>')
+                }
+                else if ($(".type").val() == 2) {
+                    $(".nm-content").html(
+                            '<tr class="form-first">' +
+                            '<td class="op-title"><span class="form-name">团队名称</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的团队名称" name="groupName" maxlength="40" class="perverifi personal-user mustwrite" data-perverifi = "perxingming"></td>' +
+                            '</tr>' +
+                            '<tr class="form-second">' +
+                            '<td class="op-title">电子邮箱<span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的电子邮箱" name="groupEmail" class="perverifi personal-email mustwrite" data-perverifi = "peremail"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">联系电话&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的联系电话" name="phone" class="perverifi personal-phone"></td>' +
+                            '</tr>' +
+                            '<tr class="form-third">' +
+                            '<td class="op-title"><span class="form-name2">联&nbsp;&nbsp;系&nbsp;&nbsp;人</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写联系人" name="groupLinkMan" class="perverifi personal-shenfenzheng mustwrite" data-perverifi = "perxingming"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">联系地址&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" name="address" class="personal-space" placeholder="请填写您的联系地址"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">是否校友&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="radio" name="isclassmate" class="personal-school" value="1" data-value="校友" checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="isclassmate" class="personal-school" type="radio" data-value="不是校友" value="0">&nbsp;&nbsp;&nbsp;&nbsp;否</td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input name="grade" class="personal-grade" type="text" placeholder="请填写您的年级"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input name="academy" class="personal-xueyuan" type="text" placeholder="请填写您的学校"></td></tr>')
+                }
+                else if ($(".type").val() == 3) {
+                    $(".nm-content").html(
+                            '<tr class="form-first">' +
+                            '<td class="op-title"><span class="form-name">企业名称</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的企业名称" name="companyName" class="perverifi personal-user mustwrite" data-perverifi = "perxingming"></td>' +
+                            '</tr>' +
+                            '<tr class="form-second">' +
+                            '<td class="op-title">电子邮箱<span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的电子邮箱" name="companyEmail" class="perverifi personal-email mustwrite" data-perverifi = "peremail"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">联系电话&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写您的联系电话" name="phone" class="perverifi personal-phone"></td>' +
+                            '</tr>' +
+                            '<tr class="form-third">' +
+                            '<td class="op-title"><span class="form-name2">联&nbsp;&nbsp;系&nbsp;&nbsp;人</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" placeholder="请填写联系人" name="companyLinkMan" class="perverifi personal-shenfenzheng mustwrite" data-perverifi = "perxingming"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">联系地址&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="text" name="address" class="personal-space" placeholder="请填写您的联系地址"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">是否校友&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input type="radio" name="isclassmate" class="personal-school" value="1" data-value="校友" checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="isclassmate" class="personal-school" type="radio" data-value="不是校友" value="0">&nbsp;&nbsp;&nbsp;&nbsp;否</td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input name="grade" class="personal-grade" type="text" placeholder="请填写您的年级"></td>' +
+                            '</tr><tr>' +
+                            '<td class="op-title">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>' +
+                            '<td><input name="academy" class="personal-xueyuan" type="text" placeholder="请填写您的学校"></td></tr>')
+                }
+            }
+            else if ($(this).val() == 1) {
+                $(".nm-content").html("");
+            }
+        })
+    }
+    nmTab();
+
+
+    $(".ma-close").click(function () {
+        $(".ma").hide();
+        $(".ma-content").html();
+    })
+
+
+    $(".jzxx-dl").change(function () {
+        $(".jzxx-xl").html("");
+        $.ajax({
+            type: "get",
+            url: "/jjh/front/projectList.do" + "?project_id=" + $(".jzxx-dl option:checked").attr("data-id"),
+            success: function (data) {
+                $(".jzxx-xl").html();
+                for (i = 0; i < data.length; i++) {
+                    $(".jzxx-xl").append("<option data-id=" + data[i].project_id + ">" + data[i].name + "</option>");
+                }
+            },
+            error: function () {
+                $(".mask .showsay").html("网络错误");
+                $(".mask").show();
+            }
+        });
+    });
+
+//点击提交后验证表单是否正确填写
+    function btn() {
+        $(".perform-btn").on("click", function () {
+            $("#perdonatorMoney").val($(".personal-money2").val());//将输入的金额值设置给“其他”输入框的值
+            var mustwrite = $(".mustwrite");//表单必填项的jQuery对象组
+            var verifiarray = 0;//记录有多少个符合要求的必填项
+            var money = $('input:radio[name="money"]:checked').val();//获取选中金额输入框的值
+            $(".mustwrite").each(function (n,obj) {
+                var value = $(obj).val();
+                if (perverifi(value)) {
+                    verifiarray++;
+                }
+            });
+
+            if ((verifiarray < (mustwrite.length-1)) || (money=="")) {
+                $(".mask .showsay").html("为确保我们能顺利联系上您<br>请完善带*的方框内容");
+                $(".mask").show();
+                //alert($(body).height)
+                $('body').css('height','100%')
+                         .css('overflow','hidden');
+                       //alert($('body').height);
+            }
+            else {
+                dom();
+                $(".information-wrap").show();
+                console.log($("#form").serialize());
+                $(".information-btn").on("click", function () {
+                    $.ajax({
+                        type: "post",
+                        url: "/jjh/front/donate.do?projectId=" + $(".jzxx-xl option:checked").attr("data-id"),
+                        data: $("#form").serialize(),
+                        success: function (data) {
+                            if (data == "ERROR") {
+                                $(".mask .showsay").html("未知错误")
+                                $(".mask").show()
+                                 $('body').css('height','100%')
+                         .css('overflow','hidden');
+                            } else {
+                                if ($("input[class='personal-jztz']:checked").val() == 1) {
+                                    $(".information-wrap").hide();
+                                    $(".ma-content").html("<img class='img' src='" + data.url + "'/>");
+                                    $(".ma").show();
+                                    $("body").scrollTop(0);
+                                    window.donationId = data.donationId;
+                                    window.lunxun = window.setInterval(lunxun, 3000);
+                                }else if(data.status != undefined && data.status == 200){
+                                    document.write(data.data);
+                                } else {
+                                    $(".information-wrap").hide();
+                                    $(".mask .showsay").html("感谢您对重庆邮电大学教育事业的支持");
+                                    $(".mask").show()
+                                     $('body').css('height','100%')
+                         .css('overflow','hidden');
+                                }
+                            }
+                        },
+                        error: function () {
+                            $(".mask .showsay").html("网络错误")
+                            $(".mask").show()
+                             $('body').css('height','100%')
+                         .css('overflow','hidden');
+                        }
+                    })
+                })
+            }
+        })
+    }
+
+    function lunxun() {
+        var donationId = window.donationId;
+        $.ajax({
+            type: "post",
+            url: "/jjh/front/donation_result.do?donationId=" + donationId,
+            dataType: "json",
+            success: function (data) {
+                if (data == 1) {
+                    $(".ma").hide();
+                    $(".mask .showsay").html("捐款成功,感谢您对重庆邮电大学教育事业的支持");
+                    $(".mask").show()
+                    window.clearInterval(window.lunxun);
+                     $('body').css('height','100%')
+                         .css('overflow','hidden');
+                } else if (data == 0) {
+                    // 等待通知
+                    return;
+                } else {
+                    $(".ma").hide();
+                    $(".mask .showsay").html("支付过程出现异常!");
+                    $(".mask").show();
+                    window.clearInterval(window.lunxun);
+                     $('body').css('height','100%')
+                         .css('overflow','hidden');
+                }
+            },
+            error: function () {
+                $(".mask .showsay").html("网络错误");
+                $(".mask").show();
+                window.clearInterval(window.lunxun);
+                 $('body').css('height','100%')
+                         .css('overflow','hidden');
+            }
+        });
+    }
+
+    function perverifi(value){
+        if(value != ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //判断必填项输入格式（只能检测输入内容是否包含匹配正则表达式的部分，不能用来判断是否等于正则表达式）
+//    function perverifi(type, value) {
+//        if (type == 'perxingming') {
+//            var reg = /^.+\S$/;
+//            return reg.test(value);
+//        }
+//        else if (type == 'pershenfenzheng') {
+//            var reg = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+//            return reg.test(value);
+//        }
+//        else if (type == 'peremail') {
+//            var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+//            return reg.test(value);
+//        }
+//        else if (type == 'perphone') {
+//            var reg = /^1[3|4|5|8][0-9]\d{4,8}$/;
+//            return reg.test(value);
+//        }
+//    }
+
+    btn();
+    $(".personal-jz").click(function () {
+        $(".form-first").html('<td class="op-title"><span class="form-name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td><td><input type="text" placeholder="请填写您的姓名" name="personName" class="perverifi personal-user" data-perverifi = "perxingming"></td>')
+        $(".form-second").html('<td class="op-title">电子邮箱<span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' + '<td><input type="text" placeholder="请填写您的电子邮箱" name="personEmail" class="perverifi personal-email" data-perverifi = "peremail"></td>' + '</tr>')
+        $(".form-third").html('<td class="op-title"><span class="form-name2">身份证号</span>&nbsp;:&nbsp;</td><td><input type="text" placeholder="请填写您的身份证号" name="idcard" class="perverifi personal-shenfenzheng" data-perverifi = "pershenfenzheng"></td>')
+        $(this).addClass('option-active').siblings().removeClass('option-active');
+        btn();
+        $(".type").val(1);
+        nmTab();
+        CheckPersonName = true;
+        CheckPersonEmail = true;
+    })
+
+    $(".group-jz").click(function () {
+        $(".form-first").html('<td class="op-title"><span class="form-name">团队名称</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td><td><input type="text" placeholder="请填写您的团队名称（40字内）" name="groupName" maxlength="40" class="perverifi personal-user" data-perverifi = "perxingming" ></td>')
+        $(".form-second").html('<td class="op-title">电子邮箱<span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' + '<td><input type="text" placeholder="请填写您的电子邮箱" name="groupEmail" class="perverifi personal-email" data-perverifi = "peremail"></td>' + '</tr>')
+        $(".form-third").html('<td class="op-title"><span class="form-name2">联&nbsp;&nbsp;系&nbsp;&nbsp;人</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td><td><input type="text" placeholder="请填写联系人" name="groupLinkMan" class="perverifi personal-shenfenzheng" data-perverifi = "perxingming"></td>')
+        $(this).addClass('option-active').siblings().removeClass('option-active');
+        btn();
+        $(".type").val(2);
+        nmTab();
+        CheckGroupName = true;
+        CheckGroupEmail = true;
+        CheckGroupLinkName = true;
+    })
+
+    $(".company-jz").click(function () {
+        $(".form-first").html('<td class="op-title"><span class="form-name">企业名称</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td><td><input type="text" placeholder="请填写您的企业名称" name="companyName" class="perverifi personal-user" data-perverifi = "perxingming"></td>')
+        $(".form-second").html('<td class="op-title">电子邮箱<span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td>' + '<td><input type="text" placeholder="请填写您的电子邮箱" name="companyEmail" class="perverifi personal-email" data-perverifi = "peremail"></td>' + '</tr>')
+        $(".form-third").html('<td class="op-title"><span class="form-name2">联&nbsp;&nbsp;系&nbsp;&nbsp;人</span><span style="color:#FB1715"> *</span>&nbsp;:&nbsp;</td><td><input type="text" placeholder="请填写联系人" name="companyLinkMan" class="perverifi personal-shenfenzheng" data-perverifi = "perxingming"></td>')
+        $(this).addClass('option-active').siblings().removeClass('option-active');
+        btn();
+        $(".type").val(3);
+        nmTab();
+        CheckCompanyName = true;
+        CheckCompanyEmail = true;
+        CheckCompanyLinkMan = true;
+    })
+
+    function dom() {
+        if ($("input[name='visible']:checked").val() == 0) {
+            if ($(".type").val() == 1) {
+                $(".information-content").html(
+                        '<table><tr><td>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-user").val() + '</td></tr>' +
+                        '<tr><td>身&nbsp;份&nbsp;证<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-shenfenzheng").val() + '</td></tr>' +
+                        '<tr><td>电子邮箱<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-email").val() + '</td></tr>' +
+                        '<tr><td>联系电话<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-phone").val() + '</td></tr>' +
+                        '<tr><td>联系地址<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-space").val() + '</td></tr>' +
+                        '<tr><td>是否校友<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-school']:checked").attr("data-value") + '	</td></tr>' +
+                        '<tr><td>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-grade").val() + '</td></tr>' +
+                        '<tr><td>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-xueyuan").val() + '</td></tr>' +
+                        '<tr></tr><td>捐款金额<span style="color: #ff0000">*</span>:</td><td>' + $("input[name='money']:checked").val() + '</td></tr>' +
+                        '<tr><td>捐款项目<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-project").val() + $(".personal-project-txt").val() + '</td></tr>' +
+                        '<tr><td>捐款途径<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-jztz']:checked").attr("data-value") + '</td></tr>' +
+                        '<tr><td>是否匿名<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-nm']:checked").attr("data-value") + '</td></tr></table>' +
+                        '<div class="information-btn">确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认</div>')
+            }
+            else if ($(".type").val() == 2) {
+                $(".information-content").html(
+                        '<table><tr><td>团队名称<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-user").val() + '</td></tr>' +
+                        '<tr><td>联&nbsp;系&nbsp;人<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-shenfenzheng").val() + '</td></tr>' +
+                        '<tr><td>电子邮箱<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-email").val() + '</td></tr>' +
+                        '<tr><td>联系电话<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-phone").val() + '</td></tr>' +
+                        '<tr><td>联系地址<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-space").val() + '</td></tr>' +
+                        '<tr><td>是否校友<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-school']:checked").attr("data-value") + '	</td></tr>' +
+                        '<tr><td>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-grade").val() + '</td></tr>' +
+                        '<tr><td>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-xueyuan").val() + '</td></tr>' +
+                        '<tr></tr><td>捐款金额<span style="color: #ff0000">*</span>:</td><td>' + $("input[name='money']:checked").val() + '</td></tr>' +
+                        '<tr><td>捐款项目<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-project").val() + $(".personal-project-txt").val() + '</td></tr>' +
+                        '<tr><td>捐款途径<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-jztz']:checked").attr("data-value") + '</td></tr>' +
+                        '<tr><td>是否匿名<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-nm']:checked").attr("data-value") + '</td></tr></table>' +
+                        '<div class="information-btn">确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认</div>')
+            }
+            else if ($(".type").val() == 3) {
+                $(".information-content").html(
+                        '<table><tr><td>企业名称<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-user").val() + '</td></tr>' +
+                        '<tr><td>联&nbsp;系&nbsp;人<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-shenfenzheng").val() + '</td></tr>' +
+                        '<tr><td>电子邮箱<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-email").val() + '</td></tr>' +
+                        '<tr><td>联系电话<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-phone").val() + '</td></tr>' +
+                        '<tr><td>联系地址<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-space").val() + '</td></tr>' +
+                        '<tr><td>是否校友<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-school']:checked").attr("data-value") + '	</td></tr>' +
+                        '<tr><td>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-grade").val() + '</td></tr>' +
+                        '<tr><td>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-xueyuan").val() + '</td></tr>' +
+                        '<tr></tr><td>捐款金额<span style="color: #ff0000">*</span>:</td><td>' + $("input[name='money']:checked").val() + '</td></tr>' +
+                        '<tr><td>捐款项目<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-project").val() + $(".personal-project-txt").val() + '</td></tr>' +
+                        '<tr><td>捐款途径<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-jztz']:checked").attr("data-value") + '</td></tr>' +
+                        '<tr><td>是否匿名<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-nm']:checked").attr("data-value") + '</td></tr></table>' +
+                        '<div class="information-btn">确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认</div>')
+            }
+        }
+        else {
+            if ($(".type").val() == 1) {
+                $(".information-content").html(
+                        '<table>' +
+                        '<tr></tr><td>捐款金额<span style="color: #ff0000">*</span>:</td><td>' + $("input[name='money']:checked").val() + '</td></tr>' +
+                        '<tr><td>捐款项目<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-project").val() + $(".personal-project-txt").val() + '</td></tr>' +
+                        '<tr><td>捐款途径<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-jztz']:checked").attr("data-value") + '</td></tr>' +
+                        '<tr><td>是否匿名<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-nm']:checked").attr("data-value") + '</td></tr></table>' +
+                        '<div class="information-btn">确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认</div>')
+            }
+            else if ($(".type").val() == 2) {
+                $(".information-content").html(
+                        '<table>' +
+                        '<tr></tr><td>捐款金额<span style="color: #ff0000">*</span>:</td><td>' + $("input[name='money']:checked").val() + '</td></tr>' +
+                        '<tr><td>捐款项目<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-project").val() + $(".personal-project-txt").val() + '</td></tr>' +
+                        '<tr><td>捐款途径<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-jztz']:checked").attr("data-value") + '</td></tr>' +
+                        '<tr><td>是否匿名<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-nm']:checked").attr("data-value") + '</td></tr></table>' +
+                        '<div class="information-btn">确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认</div>')
+            }
+            else if ($(".type").val() == 3) {
+                $(".information-content").html(
+                        '<table>' +
+                        '<tr></tr><td>捐款金额<span style="color: #ff0000">*</span>:</td><td>' + $("input[name='money']:checked").val() + '</td></tr>' +
+                        '<tr><td>捐款项目<span style="color: #ff0000">*</span>:</td><td>' + $(".personal-project").val() + $(".personal-project-txt").val() + '</td></tr>' +
+                        '<tr><td>捐款途径<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-jztz']:checked").attr("data-value") + '</td></tr>' +
+                        '<tr><td>是否匿名<span style="color: #ff0000">*</span>:</td><td>' + $("input[class='personal-nm']:checked").attr("data-value") + '</td></tr></table>' +
+                        '<div class="information-btn">确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认</div>')
+            }
+        }
+    }
+
+    $(".close").on("click", function () {
+        if ($(".mask").attr("ok") === "yes") {
+            $(".mask").toggle(400);
+            location.reload();
+            $('body').css('overflow','auto');
+        } else {
+            $(".mask").toggle(400);
+             $('body').css('overflow','auto');
+
+        }
+    })
+
+    $(".information-closed").on("click", function () {
+        $(".information-wrap").hide(100);
+    })
+
+
+    $("input[name='personal-jz']").click(function () {
+        if ($("input[name='personal-jz']")[0].checked) {
+            $(".per-zx").show();
+        }
+        else {
+            $(".per-zx").hide();
+        }
+    });
+
+    $("input[name='group-jz']").click(function () {
+        if ($("input[name='group-jz']")[0].checked) {
+            $(".group-zx").show();
+        }
+        else {
+            $(".group-zx").hide();
+        }
+    });
+
+    $("input[name='qy-jz']").click(function () {
+        if ($("input[name='qy-jz']")[0].checked) {
+            $(".qy-zx").show();
+        }
+        else {
+            $(".qy-zx").hide();
+        }
+    });
+
+    //校验必填项是否为空
+    $(document).delegate("input[name='personName']", "blur", checkPersonName);
+    $(document).delegate("input[name='personEmail']", "blur", checkPersonEmail);
+    $(document).delegate("input[name='groupName']", "blur", checkGroupName);
+    $(document).delegate("input[name='groupEmail']", "blur", checkGroupEmail);
+    $(document).delegate("input[name='groupLinkMan']", "blur", checkGroupLinkName);
+    $(document).delegate("input[name='companyName']", "blur", checkCompanyName);
+    $(document).delegate("input[name='companyEmail']", "blur", checkCompanyEmail);
+    $(document).delegate("input[name='companyLinkMan']", "blur", checkCompanyLinkMan);
+/*    $(document).delegate("input[name='setmoney']", "blur", checkMoney);*/
+    $(document).delegate("input[name='setmoney']", "focus",checkMoney_limit);
+    $(document).delegate("input[name='setmoney']", "blur",checkMoney_format);
+
+    var CheckPersonName = true;
+    var CheckPersonEmail = true;
+    var CheckGroupName = true;
+    var CheckGroupEmail = true;
+    var CheckGroupLinkName = true;
+    var CheckCompanyName = true;
+    var CheckCompanyEmail = true;
+    var CheckCompanyLinkMan = true;
+    var checkMoneyEmpty = true;//金额是否为空
+    var checkMoneyNum = true;//金额数量
+
+    function checkPersonName() {
+        if (CheckPersonName == true) {
+            if ($("input[name='personName']").val().length == 0) {
+                $("input[name='personName']").attr("style", "border: 2px solid red;");
+                $("input[name='personName']").before("<span class='noWritePersonName' style='margin-left:10px;color:red'>（必填）</span>");
+            }
+            CheckPersonName = false;
+        }
+        if ($("input[name='personName']").val().length !== 0) {
+            $("input[name='personName']").removeAttr("style");
+            $(".noWritePersonName").remove();
+            CheckPersonName = true;
+        }
+    }
+    function checkPersonEmail() {
+        if (CheckPersonEmail == true) {
+            if ($("input[name='personEmail']").val().length == 0) {
+                $("input[name='personEmail']").attr("style", "border: 2px solid red;");
+                $("input[name='personEmail']").before("<span class='noWritePersonEmail' style='margin-left:10px;color:red'>（必填）</span>");
+            }
+            CheckPersonEmail = false;
+        }
+        if ($("input[name='personEmail']").val().length !== 0) {
+            $("input[name='personEmail']").removeAttr("style");
+            $(".noWritePersonEmail").remove();
+            CheckPersonEmail = true;
+        }
+    }
+    function checkGroupName() {
+        if (CheckGroupName == true) {
+            if ($("input[name='groupName']").val().length == 0) {
+                $("input[name='groupName']").attr("style", "border: 2px solid red;");
+                $("input[name='groupName']").before("<span class='noWriteGroupName' style='margin-left:10px;color:red'>（必填）</span>");
+            }
+            CheckGroupName = false;
+        }
+        if ($("input[name='groupName']").val().length !== 0) {
+            $("input[name='groupName']").removeAttr("style");
+            $(".noWriteGroupName").remove();
+            CheckGroupName = true;
+        }
+    }
+    function checkGroupEmail() {
+        if (CheckGroupEmail == true) {
+            if ($("input[name='groupEmail']").val().length == 0) {
+                $("input[name='groupEmail']").attr("style", "border: 2px solid red;");
+                $("input[name='groupEmail']").before("<span class='noWriteGroupEmail' style='margin-left:10px;color:red'>（必填）</span>");
+            }
+            CheckGroupEmail = false;
+        }
+        if ($("input[name='groupEmail']").val().length !== 0) {
+            $("input[name='groupEmail']").removeAttr("style");
+            $(".noWriteGroupEmail").remove();
+            CheckGroupEmail = true;
+        }
+    }
+    function checkGroupLinkName() {
+        if (CheckGroupLinkName == true) {
+            if ($("input[name='groupLinkMan']").val().length == 0) {
+                $("input[name='groupLinkMan']").attr("style", "border: 2px solid red;");
+                $("input[name='groupLinkMan']").before("<span class='noWriteName' style='margin-left:10px;color:red'>（必填）</span>");
+            }
+            CheckGroupLinkName = false;
+        }
+        if ($("input[name='groupLinkMan']").val().length !== 0) {
+            $("input[name='groupLinkMan']").removeAttr("style");
+            $(".noWriteName").remove();
+            CheckGroupLinkName = true;
+        }
+    }
+    function checkCompanyName() {
+        if (CheckCompanyName == true) {
+            if ($("input[name='companyName']").val().length == 0) {
+                $("input[name='companyName']").attr("style", "border: 2px solid red;");
+                $("input[name='companyName']").before("<span class='noWriteCompanyName' style='margin-left:10px;color:red'>（必填）</span>");
+            }
+            CheckCompanyName = false;
+        }
+        if ($("input[name='companyName']").val().length !== 0) {
+            $("input[name='companyName']").removeAttr("style");
+            $(".noWriteCompanyName").remove();
+            CheckCompanyName = true;
+        }
+    }
+    function checkCompanyEmail() {
+        if (CheckCompanyEmail == true) {
+            if ($("input[name='companyEmail']").val().length == 0) {
+                $("input[name='companyEmail']").attr("style", "border: 2px solid red;");
+                $("input[name='companyEmail']").before("<span class='noWriteCompanyEmail' style='margin-left:10px;color:red'>（必填）</span>");
+            }
+            CheckCompanyEmail = false;
+        }
+        if ($("input[name='companyEmail']").val().length !== 0) {
+            $("input[name='companyEmail']").removeAttr("style");
+            $(".noWriteCompanyEmail").remove();
+            CheckCompanyEmail = true;
+        }
+    }
+    function checkCompanyLinkMan() {
+        if (CheckCompanyLinkMan == true) {
+            if ($("input[name='companyLinkMan']").val().length == 0) {
+                $("input[name='companyLinkMan']").attr("style", "border: 2px solid red;");
+                $("input[name='companyLinkMan']").before("<span class='noWriteCompanyLinkMan' style='margin-left:10px;color:red'>（必填）</span>");
+            }
+            CheckCompanyLinkMan = false;
+        }
+        if ($("input[name='companyLinkMan']").val().length !== 0) {
+            $("input[name='companyLinkMan']").removeAttr("style");
+            $(".noWriteCompanyLinkMan").remove();
+            CheckCompanyLinkMan = true;
+        }
+    }
+
+    //输入金额限制
+    function checkMoney_limit(){
+        //禁止数字首位为0
+        $("input[name='setmoney']").bind('input.a',function(e){
+            if (e.target.value==0){
+                $(this).val("");
+            }
+        });
+
+        //限制输入框只能输入数字（不是数字无法输入）
+        $("input[name='setmoney']").on('input.b',function(e){
+            var money = e.target.value;
+            if (isNaN(money)){
+                $(this).val("");
+            }
+            if (money.indexOf(".")!=-1){
+                $(this).val("");
+            }
+        });
+    }
+
+    //输入金额应在10元至10万元之间
+    function checkMoney_format(){
+        var money = $("input[name='setmoney']").val();
+
+        if (money==""){
+            if (checkMoneyEmpty == true){
+                $("input[name='setmoney']").attr("style", "border: 2px solid red;width: 255px");
+                $("input[name='setmoney']").before("<span class='noSetMoney' style='margin-left:10px;color:red'>（必填）</span>");
+                $(".SetMoneyNum").remove();
+                checkMoneyEmpty = false;
+                checkMoneyNum = true;
+            }
+        }else if (money<10||money>100000){
+            if(checkMoneyNum == true){
+                $("input[name='setmoney']").attr("style", "border: 2px solid red;width: 255px");
+                $("input[name='setmoney']").before("<span class='SetMoneyNum' style='margin-left:10px;color:red'>（10元-10万元）</span>");
+                $(this).val("");
+                $(".noSetMoney").remove();
+                checkMoneyNum = false;
+                checkMoneyEmpty = true;
+            }
+        }else{
+            $("input[name='setmoney']").attr("style", "width: 255px");//不为空且金额正确，删除红框
+            $(".noSetMoney").remove();
+            $(".SetMoneyNum").remove();
+            checkMoneyEmpty = true;
+            checkMoneyNum = true;
+        }
+    }
+
+
+
+
+/*    //    校验输入金额
+    $(limit_money_input);
+    function checkMoney() {
+
+        if (checkEmptyMoney() == true) {
+            if (CheckSetMoney == true) {
+                $("input[name='setmoney']").attr("style", "border: 2px solid red;width: 255px");
+                $("input[name='setmoney']").before("<span class='noSetMoney' style='margin-left:10px;color:red'>（必填）</span>");
+                $(".errorSetMoney").remove();
+                CheckSetMoney = false;
+                CheckMoneyFormat = true;
+            }
+        }
+
+        if (checkEmptyMoney() == false) {
+
+            $(".noSetMoney").remove();//不为空，删除提示
+            CheckSetMoney = true;
+
+            if (checkMoneyFormat() == false) {
+
+                if (checkEmptyMoney() == true) {
+                    $("input[name='setmoney']").attr("style", "border: 2px solid red;width: 255px");
+                    $("input[name='setmoney']").before("<span class='noSetMoney' style='margin-left:10px;color:red'>（必填）</span>");
+                    CheckMoneyFormat = false;
+                }
+
+                if (CheckMoneyFormat == true) {
+                    $("input[name='setmoney']").attr("style", "border: 2px solid red;width: 255px");
+                    $("input[name='setmoney']").before("<span class='errorSetMoney' style='margin-left:10px;color:red'>（请输入正确的金额格式）</span>");
+                    CheckMoneyFormat = false;
+                }
+
+            }
+
+            if (checkMoneyFormat() == true) {
+                $("input[name='setmoney']").attr("style", "width: 255px");//不为空且格式正确，删除红框
+                $(".errorSetMoney").remove();
+                CheckMoneyFormat = true;
+            }
+
+        }
+    }
+
+    //    校验输入金额格式
+    function checkMoneyFormat() {
+
+        var money = $("input[name='setmoney']").val();
+
+        if (!isNaN(money)) {
+            if (money > 0) {
+                if (!(money.indexOf(".")>=0)) {
+                    if (money.charAt(0) == 0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    if ((money.charAt(1) == ".") && (0 < money.substring(money.indexOf(".") + 1).length && money.substring(money.indexOf(".") + 1).length < 3)) {
+                        return true;
+                    }
+                    if ((money.indexOf(".") > 1) && (money.charAt(0) != 0) && (0 < money.substring(money.indexOf(".") + 1).length && money.substring(money.indexOf(".") + 1).length < 3)) {
+                        return true;
+                    }
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    //    校验输入金额是否为空
+    function checkEmptyMoney() {
+        if ($("input[name='setmoney']").val().length == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //    金额输入限制函数
+    function limit_money_input() {
+        //不允许粘贴金额
+        $("input[name='setmoney']").bind("contextmenu", function () {
+            return false;
+        });
+
+        $("input[name='setmoney']").css('ime-mode', 'disabled');
+
+        $("input[name='setmoney']").bind("keydown", function (e) {
+            var key = window.event ? e.keyCode : e.which;//处理兼容问题
+            if (isFullStop(key)) {
+                return $(this).val().indexOf('.') < 0;
+            }
+            return (isSpecialKey(key)) || ((isNumber(key) && !e.shiftKey));
+        });
+    }
+    function isNumber(key) {
+        return key >= 48 && key <= 57
+    }
+    function isSpecialKey(key) {
+        //8:backspace; 46:delete; 37-40:arrows; 36:home; 35:end; 9:tab; 13:enter
+        return key == 8 || key == 46 || (key >= 37 && key <= 40) || key == 35 || key == 36 || key == 9 || key == 13
+    }
+    function isFullStop(key) {
+        return key == 190 || key == 110;
+    }
+
+    function onlyDecimalNum() {
+        var endValue = "";
+
+        $("input[name='setmoney']").on("input", function(e) {
+            var event = e || window.event;
+            var num = event.target.value;
+            var reg = new RegExp("^(([1-9]{1}(\\d){0,8})|([0]{1}))(\\.(\\d){1,2})?$");
+            if (num) {
+                if (!isNaN(num)) {
+                    if (!reg.test(num)) {
+                        var obj = num.split(".");
+                        if (obj.length == 2 && !obj[1]) {
+                            endValue = num;
+                            $(this).val(endValue);
+                        } else {
+                            $(this).val(endValue);
+                        }
+                    }
+                } else {
+                    $(this).val(endValue);
+                }
+            } else {
+                endValue = "";
+                $(this).val(endValue);
+            }
+        });
+    }
+    /!**
+     * 金额限制
+     *!/
+    onlyDecimalNum();*/
+
+
+
+
+</script>
+</body>
+</html>

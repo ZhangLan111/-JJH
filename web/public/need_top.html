@@ -1,0 +1,173 @@
+<!--通用的首部-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>重邮教育基金会</title>
+    <link rel="stylesheet" href="/jjh/web/css/public/reset.css">
+    <link rel="stylesheet" href="/jjh/web/css/public/header.css" />
+</head>
+<div class="h-main">
+    <div class="header-top"></div>
+    <div class="header">
+        <div class="header-text">
+            <a href="../../../main.shtml"><h1 class="logo"></h1></a>
+            <div class="nav">
+                <div class="main-nav">
+                    <ul>
+                        <!-- 						<li class="tipnav">
+	<a href="/jjh/web/index.shtml">首页</a>
+</li> -->
+                        <li class="tipnav">
+                            <a href="/jjh/web/news/third_news.shtml" class="bg">新闻公告</a>
+                            <ul>
+                                <li><a href="/jjh/web/news/third_news.shtml">新闻信息</a></li>
+                                <li><a href="/jjh/web/news/third_news_info.shtml">通知公告</a></li>
+                                <li><a href="/jjh/web/news/third_download.shtml">资料下载</a></li>
+                                <li><a href="/jjh/web/news/third_link.shtml">友情链接</a></li>
+                            </ul>
+                        </li>
+                        <li class="tipnav">
+                            <a href="/jjh/web/donationGuide/donationGuide.shtml" class="bg">捐赠指南</a>
+                            <ul>
+                                <li><a href="/jjh/web/donationGuide/donation_policy.shtml">捐款政策</a></li>
+                                <li><a href="/jjh/web/donationGuide/donation_flow.shtml">捐赠流程</a></li>
+                            </ul>
+                        </li>
+                        <li class="tipnav">
+                            <a href="/jjh/web/donationProject/donation_stud.shtml" class="bg">捐赠项目</a>
+                            <ul>
+                                <li><a href="/jjh/web/donationProject/donation_stud.shtml">现金类捐赠</a></li>
+                                <li><a href="/jjh/web/donationProject/donation_software.shtml">非现金类捐赠</a></li>
+                            </ul>
+                        </li>
+                        <li class="tipnav">
+                            <a href="/jjh/web/volunteer/volunteering_server.shtml" class="bg">志愿服务</a>
+                            <ul>
+                                <li><a href="/jjh/web/volunteer/volunteering_server.shtml">志愿报名</a></li>
+                                <li><a href="/jjh/web/volunteer/show_exhibition.shtml">志愿展示</a></li>
+                            </ul>
+                        </li>
+                        <li class="tipnav">
+                            <a href="/jjh/web/helpAndthank/help.shtml" class="bg">求助感谢</a>
+                            <ul>
+                                <li><a href="/jjh/web/helpAndthank/help.shtml">求助平台</a></li>
+                                <li><a href="/jjh/web/helpAndthank/thank.shtml">感谢平台</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="small-nav">
+                    <ul>
+                        <!--<li class="login-dl"><a href="#"  class="login-wrap-toggle">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</a></li>-->
+                        <li><a href="/jjh/web/donationGuide/donationGuide.shtml">我要捐赠</a></li>
+                        <li><a href="/jjh/web/public/donation_question.shtml">常见问题</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<%&#45;&#45;登录&#45;&#45;%>-->
+<div class="login">
+    <div class="login-bg"></div>
+    <div class="login-wrap">
+        <div class="login-title">
+            <a href="#" class="login-closed">x</a>
+            <h2>用户登录</h2>
+        </div>
+        <div class="login-content">
+            <form id="login">
+                <div class="login-text-wrap">
+                    <img class="login-icon" src="/jjh/web/img/index/login-user.png">
+                    <input name="phone_number" type="text" placeholder="手机号">
+                </div>
+                <div class="login-text-wrap" style="margin-bottom: 0px;">
+                    <img class="login-icon" src="/jjh/web/img/index/login-pwd.png">
+                    <input name="password" type="password" placeholder="请输入密码">
+                </div>
+                <div class="login-wjpwd">
+                    <a href="/jjh/web/back_pwd.shtml">忘记密码</a>
+                </div>
+                <div class="login-text-wrap login-text-nowrap" style="margin-bottom: 0px;">
+                    <div class="login-ya-wrap" style="margin-bottom: 0px;">
+                        <input name="randcode" type="text" placeholder="请输入验证码" class="yz-text">
+                    </div>
+                    <div class="login-yzm-img" style="margin-bottom: 0px;">
+                        <img id='checkCodeImg' src="/checkCode.do" alt="点击刷新" onclick="javascript:this.src='/checkCode.do?'+Math.random()" style="cursor:pointer; vertical-align:middle; width:63px; height:30px; margin-left:5px;" />
+                    </div>
+                </div>
+                <div class="login-wjpwd">
+                </div>
+                <button class="login-btn-login">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+                <div class="login-btn-enroll"><a href="/jjh/web/enroll.shtml"> 点击注册</a></div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/jjh/web/js/iframe/jquery-1.11.3.min.js"></script>
+<script>
+$($.ajax({
+    type: "post",
+    url: "/jjh/truser/isLogin.do",
+    //			<li><a href="/jjh/web/personal_center.shtml">个人中心</a></li>
+    //			<li><a href="/jjh/truser/logout.do">退出登录</a></li>
+    success: function(data) {
+        if (data == "1") {
+            $(".login-dl").html('<a href="/jjh/web/personal_center.shtml">个人中心</a>');
+        }
+    },
+    error: function() {
+        alert("网络错误")
+    }
+}));
+
+function changeCheckCode() {
+    $("#checkCodeImg").attr("src", "/checkCode.do?rand=" + Math.random());
+}
+$(".login-wrap-toggle").click(function() {
+    $(".login").show();
+})
+
+$(".login-closed").click(function() {
+    $(".login").hide();
+})
+
+$(".login-bg").css("height", $(window).height());
+
+/*更换验证码*/
+$(".login-yz-change").on("click", function() {
+    $.ajax({
+        type: "post",
+        url: "",
+        success: function(data) {
+            $(".login-yzm-img").html(data);
+        },
+        erro: function() {
+            alert("网络错误")
+        }
+    })
+})
+
+/*登录*/
+$(".login-btn-login").on("click", function() {
+    $.ajax({
+        type: "post",
+        url: "/jjh/truser/l.do",
+        data: $("#login").serialize(),
+        success: function(data) {
+            if (data == "000009") {
+                location.href = "/jjh/web/public/need_top.html";
+            } else if (data == "001003") {
+                alert("亲爱的用户该电话号码不存在");
+            } else if (data == "001008") {
+                alert("密码不正确");
+            }
+        },
+        error: function() {
+            alert("网络错误")
+        }
+    })
+})
+</script>

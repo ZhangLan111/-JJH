@@ -1,0 +1,271 @@
+<div name="winDataListButtons" class="toobar" style="padding: 5px 1px 5px">
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-refresh',plain:true" onclick="refresh()">刷新</a>
+    <!--#include virtual="/system/getActions.do?module=donation"-->
+    | 所属系统：<input class="easyui-combotree" name="system_id" width="120px" data-options="required:true,url:'/system/getSystem.do',onLoadSuccess:function(node,data){getCurrWin().find('[textboxname=system_id]').combotree('setValue', data[0]['id']);setTimeout(function(){setParam();refresh();},0);},method:'get',editable: false,valueField:'id',textField:'text',onSelect:function(){setTimeout(function(){setParam();refresh();},0);}"/>
+    | 支付方式：<select name="paytype" style="width:120px" class="easyui-combobox" data-options="editable: false,onSelect:function(record){
+                setTimeout(function(){setParam();refresh();},0);}">
+            <option value="-1" selected>所有</option>
+            <option value="1" >微信支付</option>
+            <option value="2">支付宝</option>
+            <option value="3">银联</option>
+        </select>
+    | 支付状态：<select name="status" style="width:120px" class="easyui-combobox" data-options="editable: false,onSelect:function(record){
+                setTimeout(function(){setParam();refresh();},0);}">
+            <option value="-1" selected>不限</option>
+            <option value="1">已到账</option>
+            <option value="0">未到账</option>
+            <option value="2">失败</option>
+        </select>
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="searchShow(this)">更多查询..</a>
+    <div>
+
+        | 已到账：<span id="getMoney">0</span>元
+
+        | 未到账：<span id="ungetMoney">0</span>元
+    </div>
+
+</div>
+
+<table name="winDataList" class="datagrid" style="height: 100%;width: 100%" data-options="cache:false,autoRowHeight:false,pageSize:20,fitColumns:true,pagePosition:'bottom',striped:true,rownumbers:true,singleSelect:true,pagination:true,method:'get'">
+    <thead>
+    <tr>
+        <th data-options="field:'getTotalMoney',hidden:true,formatter:function(value,rowData,index){
+                if(index == 0){
+                    document.getElementById('getMoney').innerHTML = value;
+                }
+                return 0;
+        }">已到账</th>
+        <th data-options="field:'ungetTotalMoney',hidden:true,formatter:function(value,rowData,index){
+                if(index == 0){
+                    document.getElementById('ungetMoney').innerHTML = value;
+                }
+                return 0;
+        }">未到账</th>
+        <th data-options="field:'ck',checkbox:true"></th>
+        <th data-options="field:'donationId',align:'left',width:40">捐赠编号</th>
+        <th data-options="field:'name',align:'left',width:60">姓名/联系人</th>
+        <th data-options="field:'groupname',align:'left',width:110">团体/企业名</th>
+        <th data-options="field:'money',align:'center',width:40,formatter:function(value,rowData,index){value+='元';return value;}">捐赠金额</th>
+        <th data-options="field:'paytime',align:'left',width:100">时间</th>
+        <th data-options="field:'phone',align:'left',width:110">联系电话</th>
+        <th data-options="field:'paytype',align:'center',width:40,formatter:function(value,rowData,index){
+            if(value==0){
+                return '手工';
+            }else if(value==1){
+                return '微信';
+            }else if(value==2){
+                return '支付宝';
+            }else if(value==3){
+                return '银联';
+            }
+        }">支付方式</th>
+        <th data-options="field:'status',align:'center',width:40,formatter:function(value,rowData,index){
+            if(value==0){
+                return '未到账';
+            }else if(value==1){
+                return '<font color=red>已到账</font>';
+            }else if(value==2){
+                return '<font color=red>失败</font>';
+            }
+        }">状态</th>
+    </tr>
+    </thead>
+</table>
+
+<textarea name="winEditHtml" style="display: none;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding: 12px 12px 0 12px;">
+            <form name="obj" method="post" class="c-form">
+                <input type="hidden" name="projectId" value=1>
+                <input type="hidden" name="donationId"/>
+                <input type="hidden" name="system_id" id="system_id">
+                <input type="hidden" name="system_name" id="system_name">
+                <input type="hidden" name="module_id" value="71">
+                <input type="hidden" id="option_type" name="option_type" value="add"><!--判断类型 必须包含-->
+
+                <table class="table">
+                    <!--<tr>-->
+                        <!--<td class="label">捐赠用户(UserId)</td>-->
+                        <!--<td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="userId"/></td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <td class="label">联系人</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="name" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">类型</td>
+                        <td class="value">
+                            <select name="type" class="easyui-combobox easyui-validatebox" data-options="required:true,editable:false,missingMessage:'捐赠者类型'">
+                            <option value="1">个人</option>
+                            <option value="2">团体</option>
+                            <option value="3">企业</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">团体名称</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="groupname" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">电话</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="phone" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">邮箱</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">地址</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="address" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">身份证号</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="idcard" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">是否校友</td>
+                        <td class="value">
+                            <select name="iscalssmate" class="easyui-combobox easyui-validatebox" data-options="required:true,editable:false,missingMessage:'请选择支付方式'">
+                            <option value="0">否</option>
+                            <option value="1">是</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">学院</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="academy" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">年级</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="grade" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">捐赠金额(元)</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="money"/></td>
+                    </tr>
+                    <tr>
+                        <td class="label">捐赠项目</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox"  name="project" value="请选择一个项目" data-options="editable:false,required:true,missingMessage:'请选择一个上级项目',buttonIcon:'icon-search',onClickButton:function(){var system_id=getObj(this,'system_id').val();ChoiceBaseDialog('/jjh/project/list.do?system_id='+system_id,false,false,getObj(this,'projectId'),getObj(this,'projectName','textboxname'));}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="label">支付时间</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="paytime" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">商户订单号</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="paytime" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">商户订单号</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="outTradeNo" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">第三方支付单号</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="transactionId" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">对账次数</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="jiaoNum" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label">支付方式</td>
+                        <td class="value">
+                            <select name="paytype" class="easyui-combobox easyui-validatebox" data-options="required:true,editable:false,missingMessage:'请选择支付方式'">
+                            <option value="0">手工</option>
+                            <option value="1">微信</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">状态</td>
+                        <td class="value">
+                            <select name="status" class="easyui-combobox easyui-validatebox" data-options="required:true,editable:false,missingMessage:'请选择到账转状态'">
+                                <option value="0">未到账</option>
+                                <option value="1">已到账</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">是否匿名</td>
+                        <td class="value">
+                            <select name="visible" class="easyui-combobox easyui-validatebox" data-options="required:true,editable:false,missingMessage:'请选择到显示状态'">
+                                <option value="0">匿名</option>
+                                <option value="1">不匿名</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="c-w-t" data-options="region:'south'">
+            <#buttons/>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-close',plain:true" onclick="closeCurrWin()">关闭</a>
+        </div>
+    </div>
+        <script>
+            /** TODO:参考设计属性控制
+            !function(){
+                ue.ready(function() {
+                    if($("#option_type").val() == "show"){
+                        ue.setDisabled();
+                    }
+                    ue.setContent($("#description").val());
+                    $("#description").remove();
+                });
+            }();
+             **/
+            function showEdit(obj){
+                // 修改状态为edit
+                setVal(getObj(obj, "option_type", null), "edit");
+                $("form td p").remove();
+                $("form").removeClass("hide");
+                if(getParentQuery().afterEdit){
+                    getParentQuery().afterEdit();
+                }
+            }
+        </script>
+</textarea>
+
+<script>
+    !function(){
+        var module_id=getUrlParam('?<!--#echo var="QUERY_STRING"-->',"module_id");
+        listBind({
+            windowWidth:900,
+            windowHeight:600,
+            keyField:'donationId',
+            save:"/jjh/donation/save.do",
+            show:"/jjh/donation/show.do",
+            del: "/jjh/donation/del.do",
+            search:[{field:'donation_id',title:'捐赠编号',c_dataType:'number'},
+                {field:'money',title:'捐赠金额',c_dataType: 'number'},
+                {field:'paytime',title:'捐赠时间',c_dataType:'date'},
+                {field:'name',title:'姓名',c_dataType:'string'},
+                {field:'paytype',title:'支付方式',c_dataType:'number'}
+            ],
+            listUrl: "/jjh/donation/list.do",
+            param:{},
+            afterAdd:function(){
+                $.ajax({
+                    url:"/system/getUserName.do",
+                    dataType:"json",
+                    success:function(data){
+                        var win=getCurrWin();
+                        win.find('[name=system_name]').val(data.system_name);
+                        win.find('[name=system_id]').val(data.system_id);
+                    }
+                });
+            },
+            afterEdit:function(){
+                $.ajax({
+                    url:"/system/getUserName.do",
+                    dataType:"json",
+                    success:function(data){
+                        var win=getCurrWin();
+                        win.find('[name=system_name]').val(data.system_name);
+                        win.find('[name=system_id]').val(data.system_id);
+                    }
+                });
+            }
+        },true);
+    }();
+</script>

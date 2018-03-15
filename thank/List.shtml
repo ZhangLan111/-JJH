@@ -1,0 +1,176 @@
+
+<div name="winDataListButtons" class="toobar" style="padding: 5px 1px 5px">
+    <!--#include virtual="/system/getActions.do?module=volunteer"-->
+    | 所属系统：<input class="easyui-combotree" name="system_id" width="120px" data-options="required:true,url:'/system/getSystem.do',onLoadSuccess:function(node,data){getCurrWin().find('[textboxname=system_id]').combotree('setValue', data[0]['id']);setTimeout(function(){setParam();refresh();},0);},method:'get',editable: false,valueField:'id',textField:'text',onSelect:function(){setTimeout(function(){setParam();refresh();},0);}"/>
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="searchShow(this)">更多查询..</a>
+</div>
+
+<table name="winDataList" class="datagrid" style="height: 100%;width: 100%" data-options="cache:false,autoRowHeight:false,pageSize:20,fitColumns:true,pagePosition:'bottom',striped:true,rownumbers:true,singleSelect:true,pagination:true,method:'get'">
+    <thead>
+    <tr>
+        <th data-options="field:'ck',checkbox:true"></th>
+        <th data-options="field:'tTitle',align:'left',width:100">标题</th>
+        <th data-options="field:'tName',align:'left',width:80">姓名</th>
+        <th data-options="field:'tStuid',align:'center',width:70">学号</th>
+        <th data-options="field:'tGrade',align:'center',width:40">年级</th>
+        <th data-options="field:'tIdentitycard',align:'center',width:130">身份证号</th>
+        <th data-options="field:'tTel',align:'center',width:110">联系方式</th>
+        <th data-options="field:'tTname',align:'center',width:50">感谢人</th>
+        <th data-options='field:"vactivityIntroduce",align:"center",width:110,formatter:function(value,rowData,index){
+            return "<a style=\"color:blue\" onclick=\"showRow1()\"><查看></a>";
+        }'>感谢事由</th>
+        <th data-options='field:"tPicurl",align:"center",width:110,formatter:function(value,rowData,index){
+            return "<a style=\"color:blue\" onclick=\"changeStatus("+rowData.tId+")\"><上传图片></a>";
+        }'>图片管理</th>
+        <th data-options="field:'tStatus',align:'center',width:55">处理情况</th>
+        <th data-options="field:'tTime',align:'center',width:130">创建时间</th>
+    </tr>
+    </thead>
+</table>
+
+<textarea name="winEditHtml" style="display: none;">
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding: 12px 12px 0 12px;">
+            <form name="obj" method="post" class="c-form">
+                <input type="hidden" name="tId" value="0">
+                <input type="hidden" id="option_type" name="option_type" value="add"><!--判断类型 必须包含-->
+                <input type="hidden" name="tThing" id="tThing">
+                <table class="table">
+                    <tr>
+                         <td class="label-2">标题：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" data-options="required:true" name="tTitle"></td>
+                        <td class="label-2">姓名：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" data-options="required:true" name="tName"></td>
+
+                    </tr>
+                    <tr>
+                         <td class="label-2">学号：</td>
+                        <td class="value-2"><input  name="tStuid" class="easyui-validatebox easyui-textbox" data-options="required:true"></td>
+                        <td class="label-2">年级：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" data-options="required:true"  name="tGrade"></td>
+
+                    </tr>
+                    <tr>
+                        <td class="label-2">身份证号：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="tIdentitycard" data-options="required:true" ></td>
+                        <td class="label-2">联系方式：</td>
+                        <td  class="value-2" ><input class="easyui-validatebox easyui-textbox" name="tTel" data-options="required:true"/></td>
+
+                    </tr>
+                    <tr>
+                        <td class="label-2">感谢人：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="tTname" data-options="required:true" ></td>
+                    </tr>
+                    <tr>
+                        <td class="value" colspan="4"><script id="container"  name="tThing" type="text/plain"></script></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="c-w-t" data-options="region:'south'">
+            <#buttons/>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-close',plain:true" onclick="closeCurrWin()">关闭</a>
+        </div>
+    </div>
+     <script>
+         !function(){
+             var ue = UE.getEditor("container");
+             ue.ready(function() {
+                 if($("#option_type").val() == "show"){
+                     ue.setDisabled();
+                 }
+                 ue.setContent($("#tThing").val());
+                 $("#tThing").remove();
+             });
+
+         }();
+         function showEdit(obj){
+             var ue = UE.getEditor("container");
+             ue.setEnabled();
+             setVal(getObj(obj, "option_type", null), "edit");
+             var pp = $(obj).parent();
+             $(obj).parent().empty();
+             pp.append($("<a name=\"button_save\" class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-save',plain:true\" onclick=\"save()\">保存</a>")).append("<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-close',plain:true\" onclick=\"closeCurrWin()\">关闭</a>");
+             $.parser.parse(pp);
+             $("form td p").remove();
+             $("form").removeClass("hide");
+
+             if(getParentQuery().afterEdit){
+                 getParentQuery().afterEdit();
+             }
+         }
+     </script>
+</textarea>
+
+<script>
+    function showRow1(type, title, gridName) {
+        type="show";
+        title="查看";
+        if (runing){return;}
+        runing=true;
+        if (!type) {type = "show";}
+        if (!title) {title = "查看";}
+        if (!gridName)gridName = "winDataList";
+
+        var table = getCurrWin().find("[name=" + gridName + "]");
+        var row;
+        if (table.hasClass("treegrid")) {
+            row = table.treegrid("getSelections");
+        } else if (table.hasClass("datagrid")) {
+            row = table.datagrid("getSelections");
+        }
+        if (!row || row.length == 0) {
+            $.messager.alert("提示", "请先选择一行再" + title + "！");
+            runing=false;
+            return;
+        }
+        if (row.length > 1){
+            $.messager.alert("提示", "只能选择一行进行操作！");
+            runing=false;
+            return;
+        }
+        var query = getCurrQuery();
+        query.param['option_type'] =  type;
+        var param="";
+        $.each(query.param,function(index,elem){
+            param=param+"&"+index+"="+elem;
+        });
+        loadData(query.show + "?id=" + row[0][query.keyField] + param, function (result) {
+            retMessage(result,
+                    function () {
+                        var temp= getCurrWin().find("[name=winEditHtml]").val().replace("<#buttons/>", ((type == "show") ? getButtons(result["privilege"]) : "<a name=\"button_save\" class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-save',plain:true\" onclick=\"save()\">保存</a>\n"));
+                        if(query.beforShow){temp=query.beforShow(type,temp,result);if(temp==null)return;}
+                        openWin(query.windowWidth, query.windowHeight, title, temp, null, null, function (obj) {
+                            onLoad(obj, type, result, function(){
+                                if(type === "edit"){
+                                    if(query.afterEdit)query.afterEdit(result);
+                                } else if(type === "show") {
+                                    if(query.afterShow)query.afterShow(result);
+                                }
+                            });
+                        });
+                    });
+        });
+        runing=false;
+    }
+    !function(){
+        var module_id=getUrlParam('?<!--#echo var="QUERY_STRING"-->',"module_id");
+        listBind({
+            windowWidth:800,
+            windowHeight:500,
+            keyField:'tId',
+            save:"/jjh/thank/save.do",
+            show:"/jjh/thank/show.do",
+            del: "/jjh/thank/del.do",
+            getThing:"/jjh/thank/getThing.do",
+            search:[{field:'tName',title:'姓名',c_dataType:'string'}],
+            listUrl: "/jjh/thank/list.do?module_id="+100,
+            param:{}},true);
+    }();
+    function changeStatus(value){
+        openWinUrl(600, 320,'上传显示图片','/jjh/thank/uploadIndex.do?tId='+value,null,"ntc",null);
+    }
+</script>

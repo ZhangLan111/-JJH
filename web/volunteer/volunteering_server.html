@@ -1,0 +1,347 @@
+<!--志愿者报名-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" contet="webkit">
+  <!--360使用各内核-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <meta content="...."  name="keywords">  关键字 -->
+  <meta content="重庆,邮电,大学,cqupt,捐赠" name="Keywords">
+  <title>重邮教育基金会</title>
+  <link rel="stylesheet" href="../css/public/reset.css" />
+  <link rel="stylesheet" href="../css/public/header.css">
+  <link rel="stylesheet" href="../css/public/footer.css" />
+  <link rel="stylesheet" href="../css/public/volunteering.css" />
+</head>
+
+<body>
+<!--#include virtual="/jjh/web/public/need_top.html" -->
+<div class="wrapmain">
+  <img src="../img/news/bg-tip.jpg" alt="" class="bg-tip">
+  <div class="mian">
+    <div class="context">
+      <div class="title">
+        <h2>重庆邮电大学志愿服务介绍</h2>
+      </div>
+      <div class="introuce" style="margin-top:20px;">
+        <div class="introuce-content"></div>
+        <div class="baoming-button-wrap"><a class="baoming">我要报名</a></div>
+      </div>
+      <div class="newlist">
+        <div class="newstitle">
+          <div style="font-size:18px;">志愿风采展示</div>
+        </div>
+        <div class="newsContent" id="ExhibitionUl" style="width:100%;overflow:hidden">
+          <!-- 图片列表内容 -->
+          <ul id="ul">
+          </ul>
+        </div>
+        <div class="pagecontrol">
+          <span>共1页</span>
+          <span>当前第 1 / 1 页</span>
+                        <span>
+                          <a href="#" class="up-all">第一页&nbsp;&nbsp;</a>
+                            <a href="#" class="up">上一页&nbsp;&nbsp;</a>
+                  <a href="#" class="down">下一页&nbsp;&nbsp; </a>
+                  <a href="#" class="down-all">最后一页&nbsp;&nbsp;</a>
+                </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="../img/news/bg.png" alt="" class="bg">
+</div>
+<div class="baoming-content">
+  <div class="baoming-data">
+    <div class="baoming-title">
+      <span style="float:left;margin-left:30px;margin-top:18px;font-size:16px;">志愿者报名</span>
+      <span class="close-button" style="float:right;margin-right:20px;margin-top:14px;font-size:18px;cursor:pointer">x</span>
+    </div>
+    <div class="baoming-neirong">
+      <form class="zhiyuan-form">
+        <table>
+          <tr>
+            <td>姓名：</td>
+            <td>
+              <input type="text" class="volunteerName" name="volunteerName">
+            </td>
+          </tr>
+          <tr class="tishi" id="name" style="height: 20px;">
+            <td class="name" style="font-size: 12px;"></td>
+          </tr>
+          <tr>
+            <td>年级：</td>
+            <td>
+              <input type="text" class="volunteerGrade" name="volunteerGrade">
+            </td>
+          </tr>
+          <tr class="tishi" id="nianji" style="height: 20px;">
+            <td class="nianji" style="font-size: 12px;"></td>
+          </tr>
+          <tr>
+            <td>学历：</td>
+            <td>
+              <input type="text" class="volunteerQualifications" name="volunteerQualifications">
+            </td>
+          </tr>
+         <tr class="tishi" id="xueli" style="height: 20px;">
+            <td class="xueli" style="font-size: 12px;"></td>
+          </tr>
+          <tr>
+            <td>申请时间：</td>
+            <td>
+              <input type="text" class="volunteerApplayTime" name="volunteerApplayTime">
+            </td>
+          </tr>
+          <tr class="tishi" id="Stime" style="height: 20px;">
+            <td class="Stime" style="font-size: 12px;"></td>
+          </tr>
+          <tr>
+            <td>服务时间：</td>
+            <td>
+              <input type="text" class="volunteerTime" name="volunteerTime">
+            </td>
+          </tr>
+          <tr class="tishi" id="Ftime" style="height: 20px;">
+            <td class="Ftime" style="font-size: 12px;"></td>
+          </tr>
+          <tr>
+            <td>服务次数：</td>
+            <td>
+              <input type="text" class="volunteerFrequency" name="volunteerFrequency">
+            </td>
+          </tr>
+          <tr class="tishi" id="cishu" style="height: 20px;">
+            <td class="cishu" style="font-size: 12px;"></td>
+          </tr>
+          <tr>
+            <td>服务情况：</td>
+            <td>
+              <input type="text" class="volunteerCondition" name="volunteerCondition">
+            </td>
+          </tr>
+          <tr class="tishi" id="condition" style="height: 20px;">
+            <td class="condition" style="font-size: 12px;"></td>
+          </tr>
+          <tr>
+            <td>服务活动：</td>
+            <td>
+              <input type="text" class="volunteerActivityName" name="volunteerActivityName">
+            </td>
+          </tr>
+           <tr class="tishi" id="huodong" style="height: 20px">
+            <td class="huodong" style="font-size: 12px;"></td>
+          </tr>
+        </table>
+      </form>
+      <a class="baoming-button">报名</a>
+    </div>
+  </div>
+</div>
+ <!-- 全局弹窗样式 -->
+<div class="mask">
+    <div class="mask-wrap"></div>
+    <div class="showtext">
+        <h1>提示</h1>
+
+        <p class="showsay">
+
+        </p>
+
+        <div class="close">关闭</div>
+    </div>
+</div>
+
+<div class="information-wrap" style="display: none">
+    <div class="information-bg"></div>
+    <div class="information">
+        <div class="information-title">
+            <a href="#" class="information-closed">x</a>
+
+            <h2>核实您的以下信息</h2>
+        </div>
+        <div class="information-content">
+        </div>
+    </div>
+</div>
+<script id="test" type="text/html">
+  {{each items as value i}}
+  <li>
+    <img src="{{value.exhibitionActivityPic}}">
+    <br>
+    <p>{{value.exhibitionActivityTitle}}</p>
+    <p>类型:{{value.exhibitionActivityType}}</p>
+    <p>时间:{{value.exhibitionActivityTime}}</p>
+    <p>地区:{{value.exhibitionActivityLocation}}</p>
+  </li>
+  {{/each}}
+</script>
+<!--#include virtual="/jjh/web/public/need_deep.html" -->
+<script type="text/javascript" src="../js/iframe/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/iframe/art.js"></script>
+<script type="text/javascript" src="../js/connent/page.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".baoming").click(function() {
+      $(".baoming-content").show(400);
+    })
+    $(".close-button").click(function() {
+      $(".baoming-content").hide(400);
+    })
+    //type不改
+    /*志愿服务介绍请求*/
+    $.ajax({
+      type: "get",
+      url: "/jjh/web/getVolunteerIntroduceContext.do",
+      dataType: "json",
+      success: function(data) {
+        $(".introuce-content").html("<p>" + data.volunteerIntroduceContext + "</p>");
+      },
+      error: function() {
+      }
+    });
+    /*志愿风采展示分页请求js*/
+    page("/jjh/web/exhibitionInfoServlet1.do?module_id=2");
+    $(".baoming-button").click(function(){
+      var voName = $(".volunteerName").val();
+      var voGrade = $(".volunteerGrade").val();
+      var volunteerQualifications = $(".volunteerQualifications").val();
+      var volunteerApplayTime = $(".volunteerApplayTime").val();
+      var volunteerTime = $(".volunteerTime").val();
+      var volunteerFrequency = $(".volunteerFrequency").val();
+      var volunteerCondition = $(".volunteerCondition").val();
+      var volunteerActivityName = $(".volunteerActivityName").val();
+      if (voName == "" || voGrade == "" || volunteerQualifications =="" || volunteerApplayTime =="" || volunteerTime =="" || volunteerFrequency =="" ||  volunteerCondition == "" || volunteerActivityName =="") {
+        //alert("请填写基本信息");
+         $(".mask .showsay").html("请填写基本信息");
+         $(".mask").show();
+      }
+      else{
+       /* 提交志愿者报名*/
+        $.ajax({
+          type: "post",
+          url: "/jjh/volunteer/saveVolunteer.do",
+          data:$(".zhiyuan-form").serialize(),
+          dataType: "json",
+          success: function(data) {
+            console.log($(".zhiyuan-form").serialize());
+            console.log(data);
+            $(".baoming-content").hide(400);
+          },
+          error: function() {
+
+          }
+        });
+      }
+    })
+      $(".close").on("click", function () {
+        if ($(".mask").attr("ok") === "yes") {
+            $(".mask").toggle(400);
+            location.reload()
+        } else {
+            $(".mask").toggle(400);
+        }
+    })
+     var name = $('.volunteerName');
+     var nianji = $('.volunteerGrade');
+     var xueli = $('.volunteerQualifications');
+     var Stime = $('.volunteerApplayTime');
+     var Ftime = $('.volunteerTime');
+     var content = $('.volunteerContent');
+     var condition = $('.volunteerCondition');
+     var cishu = $('.volunteerFrequency');
+     var huodong = $('.volunteerActivityName');
+     var Name_bool=false;  
+     var cishu_bool=false;
+     var nianji_bool=false;  
+     var xueli_bool=false;  
+     var Stime_bool=false;  
+     var Ftime_bool=false;
+     var content_bool=false;
+     var condition_bool=false;
+     var huodong_bool=false;
+   /* 验证*/
+    function checkform(id,main,td2,check){
+      // alert(reg.test(name.value));
+       //alert(main.val()=='');
+      if (main.val()=="") {
+         $(id).css('display','block');
+         $(td2).html('不能为空');
+         main.focus();
+         check = false;
+      }
+      else{
+        $(id).css('display','none');
+         check = true;
+      }
+    };
+      /*验证姓名*/
+    $('.volunteerName').blur(function(){
+        checkform('#name',name,'.name',Name_bool); 
+    });
+    /*验证年级*/
+    $('.volunteerGrade').blur(function(){
+       checkform('#nianji',nianji,'.nianji',nianji_bool);
+    });
+    /*验证学历*/
+    $('.volunteerQualifications').blur(function(){
+        checkform('#xueli',xueli,'.xueli',xueli_bool);
+    });
+    /*验证申请时间*/
+    $('.volunteerApplayTime').blur(function(){
+        checkform('#Stime',Stime,'.Stime',Stime_bool);
+    }); 
+    /*验证服务时间*/
+    $(".volunteerTime").blur(function(){
+        checkform('#Ftime',Ftime,'.Ftime',Ftime_bool);
+    });
+    /*验证服务次数*/
+    $('.volunteerFrequency').blur(function(){
+        checkform('#cishu',cishu,'.cihsu',cishu_bool);
+    });
+    /*验证服务情况*/
+    $('.volunteerCondition').blur(function(){
+        checkform('#condition',condition,'.condition',condition_bool);
+      }); 
+    /*验证活动*/
+    $('.volunteerActivityName').blur(function(){
+      checkform('#huodong',huodong,'.huodong',huodong_bool);
+    });
+        
+    function reset(){
+      var Name_bool=false;  
+      var nianji_bool=false;  
+      var xueli_bool=false;  
+      var Stime_bool=false;  
+      var Ftime_bool=false;
+      var content_bool=false;
+      var condition_bool=false;
+    };
+    /*function checkall(){
+      if (Name_bool&&nianji_bool&&xueli_bool&&Stime_bool&&Ftime_bool&&content_bool&&condition_bool) {
+        return true;
+      }
+      else{
+        return false;
+      }
+    };
+    checkall();
+    alert(checkall);*/
+   // alert('a');
+   //alert(Name_bool&&nianji_bool&&xueli_bool&&Stime_bool&&Ftime_bool&&content_bool&&condition_bool);
+    $('.baoming-button').click = function(){
+      //alert('a');
+       if (Name_bool&&nianji_bool&&xueli_bool&&Stime_bool&&Ftime_bool&&content_bool&&condition_bool) {
+          alert('表单已提交');
+       }
+       else{
+        alert('请正确填写表单');
+        reset();
+       }
+    };
+  });
+</script>
+
+</body>
+
+</html>

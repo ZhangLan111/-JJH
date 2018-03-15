@@ -1,0 +1,33 @@
+<div name="winDataListButtons" class="toobar" style="padding: 5px 1px 5px">
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-refresh',plain:true" onclick="refresh()">刷新</a>
+    | 所属系统：<input class="easyui-combotree" name="system_id" width="120px" data-options="required:true,url:'/system/getSystem.do',onLoadSuccess:function(node,data){getCurrWin().find('[textboxname=system_id]').combotree('setValue', data[0]['id']);setTimeout(function(){setParam();refresh();},0);},method:'get',editable: false,valueField:'id',textField:'text',onSelect:function(){setTimeout(function(){setParam();refresh();},0);}"/>
+</div>
+
+<table name="winDataList" class="datagrid" style="height: 100%;width: 100%" data-options="cache:false,autoRowHeight:false,pageSize:20,fitColumns:true,pagePosition:'bottom',striped:true,rownumbers:true,singleSelect:true,pagination:true,method:'get'">
+    <thead id="pic">
+
+    <tr>
+        <th data-options="field:'ck',checkbox:true"></th>
+        <th data-options="field:'pictureId',align:'center',width:110">图片编号</th>
+        <th data-options='field:"upload_index",align:"center",width:110,formatter:function(value,rowData,index){
+            return "<a style=\"color:blue\" onclick=\"changePicture("+rowData.pictureId+")\"><修改图片></a>";
+        }'>操作</th>
+    </tr>
+    </thead>
+</table>
+
+</textarea>
+<script>
+    !function(){
+        var module_id=getUrlParam('?<!--#echo var="QUERY_STRING"-->',"module_id");
+        listBind({
+            windowWidth:800,
+            windowHeight:320,
+            keyField:'pictureId',
+            listUrl: "/jjh/carousel/carouselist.do",
+            param:{}},true);
+    }();
+    function changePicture(value){
+    openWinUrl(600,500,'修改图片','/jjh/carousel/uploadWindow.do?pictureId='+value,null,"ntc",null);
+}
+</script>

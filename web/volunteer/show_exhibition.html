@@ -1,0 +1,71 @@
+<!--志愿者展示-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>重邮教育基金会</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="重庆,邮电,大学,cqupt,捐赠" name="Keywords">
+  <meta name="description" content="重庆邮电大学教育基金会是2012年8月31日经重庆市教委批准，于2012年11月9日经重庆市民政局登记注册成立的全国性非公募基金会">
+  <link rel="stylesheet" href="../css/public/reset.css" />
+  <link rel="stylesheet" href="../css/public/header.css" />
+  <link rel="stylesheet" href="../css/public/footer.css" />
+  <link rel="stylesheet" href="../css/public/exhibition.css" />
+</head>
+<body>
+<!-- 内容区测展 -->
+<!--#include virtual="/jjh/web/public/need_top.html" -->
+<div class="wrapmain">
+  <img src="../img/news/bg-tip.jpg" alt="" class="bg-tip">
+  <div class="mian">
+    <div class="leftnav">
+      <h3>志愿者展示</h3>
+      <ul>
+        <li><a href="volunteering_server.shtml">志愿报名</a></li>
+        <li class="active"><a href="/jjh/web/volunteer/show_exhibition.shtml">志愿者展示</a></li>
+      </ul>
+      <div class="linerow"></div>
+    </div>
+    <div class="context">
+      <div class="newlist">
+        <div class="tipheader">
+          <h3>志愿展示</h3>
+          <p>首页>>志愿服务>>志愿展示</p>
+        </div>
+        <!-- 这里要 -->
+          <ul id="ul">
+          </ul>
+        <div class="pagecontrol">
+          <span>共1页</span>
+          <span>当前第 1 / 1 页</span>
+                        <span>
+                        	<a href="#" class="up-all">第一页&nbsp;&nbsp;</a>
+                            <a href="#" class="up">上一页&nbsp;&nbsp;</a>
+        					<a href="#" class="down">下一页&nbsp;&nbsp; </a>
+        					<a href="#" class="down-all">最后一页&nbsp;&nbsp;</a>
+        				</span>
+        </div>
+      </div>
+      <p class="row-line"></p>
+    </div>
+  </div>
+  <img src="../img/news/bg.png" alt="" class="bg">
+</div>
+<script id="test" type="text/html">
+  {{each items as value i}}
+  <li><a href="{{value.exhibitionActivityContext}}">{{value.exhibitionActivityTitle}}<span>[{{value.exhibitionActivityTime}}]</span></a></li>
+  {{/each}}
+</script>
+ <!--#include virtual="/jjh/web/public/need_deep.html" -->
+<script type="text/javascript" src="../js/iframe/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/iframe/art.js"></script>
+<script type="text/javascript" src="../js/connent/page.js"></script>
+<script type="text/javascript">
+  /*志愿风采展示分页请求js*/
+  $(document).ready(function() {
+    page("/jjh/web/exhibitionInfoServlet1.do?module_id=2");})
+</script>
+</body>
+</html>
+

@@ -1,0 +1,94 @@
+<!--暂未使用-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>重邮教育基金会</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="重庆,邮电,大学,cqupt,捐赠" name="Keywords">
+	<meta name="description" content="重庆邮电大学教育基金会是2012年8月31日经重庆市教委批准，于2012年11月9日经重庆市民政局登记注册成立的全国性非公募基金会">
+	<link rel="stylesheet" href="../css/connent/donation.css" />
+	<link rel="stylesheet" href="../css/public/reset.css">
+	<link rel="stylesheet" href="../css/public/header.css">
+	<link rel="stylesheet" href="../css/public/footer.css">
+	<style>
+		.jz-btn{
+			width: 160px;
+			height: 35px;
+			background-color: #3FB782;
+			margin: auto;
+			margin-top: 20px;
+			line-height: 35px;
+			font-size: 16px;
+			text-align: center;
+		}
+		.jz-btn a{
+			color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+<!--#include virtual="/jjh/web/public/need_top.html"-->
+<div class="wrapmain">
+	<img src="../img/news/bg-tip.jpg" alt="" class="bg-tip">
+	<div class="mian">
+		<div class="leftnav">
+			<h3>捐赠项目</h3>
+			<ul>
+				<li><a href="donation_school.shtml">专项捐赠</a></li>
+				<li class="active"><a href="#">教师资助</a></li>
+				<li><a href="donation_stud.shtml">学生培养</a></li>
+			</ul>
+			<div class="linerow"></div>
+		</div>
+		<div class="context">
+			<div class="newswrap">
+				<div class="tipheader">
+					<h3>教师资助</h3>
+					<p><a href="../public/index.shtml">首页</a>>>捐赠项目>>现金类捐赠</p>
+				</div>
+				<div class="tab-change">
+					<p class="active" data-id="1">“双十佳”教师评选项目</p>
+					<p data-id="2">华为奖教金</p>
+				</div>
+				<div class="newstext show">
+					<h2>“双十佳”教师评选项目</h2>
+					<p>为加强我校教师职业道德建设，提高教书育人的质量和水平，福建省南安市远达石材有限公司从其在我校冠名设立的“重庆邮电大学文輦教育基金”中出资60万元人民币资助我校“双十佳”教师评选项目（包括“十佳师德标兵”、“十佳青年教师”），项目基金专项用于表彰从事一线教学、科研工作的在职在岗优秀教师。</p>
+					<p>“双十佳”教师评选项目每两年评选一届，连续五届每届资助该项目12万元人民币。本着公开、公正、公平的评选原则，“双十佳”教师评选将先后进行师生推荐、教学单位初评、网络评选、候选人“开讲啦”、评审委员会评选、校内公示和学校审批等流程，最终从全校评选、表彰“十佳师德标兵”、“十佳青年教师”各10名。</p>
+				</div>
+				<div class="newstext" style="display: none;">
+					<h2>华为奖教金</h2>
+					<p>为激励重庆邮电大学的教师努力工作、刻苦钻研、献身教育和科技事业，经华为技术有限公司与重庆邮电大学教育基金会商议，双方在重庆邮电大学设立“华为奖教金”。</p>
+					<p>“重庆邮电大学华为奖教金”每年一评，主要用于奖励从事教学工作成绩突出的教师和学生思想教育管理的老师，每年奖励6人（其中从事学生思想教育管理老师3名），每人2000元。 </p>
+				</div>
+			</div>
+			<div class="jz-btn"><a href="/jjh/web/donationGuide/donationGuide.shtml"> 我要捐赠</a></div>
+			<p class="row-line"></p>
+		</div>
+	</div>
+	<img src="../img/news/bg.png" alt="" class="bg">
+</div>
+<script type="text/javascript" src="../js/iframe/jquery-1.11.3.min.js" ></script>
+<script>
+	$(function(){
+		$(function(){
+			var start = 0;
+			$(".tab-change p").on("click",function(){
+				var _index = Number($(this).data("id"))-1;
+				$(this).parents(".tab-change").find('p').removeClass('active')
+				$(this).addClass('active')
+				$('.newstext.show').fadeOut(100);
+				$('.newstext').eq(_index).addClass('show').fadeIn(400)
+			})
+		})
+	})
+</script>
+
+<!-- 内容区测展 -->
+<!--#include virtual="/jjh/web/public/need_deep.html" -->
+
+<script type="text/javascript" src="../js/connent/nav.js"></script>
+
+</body>
+</html>

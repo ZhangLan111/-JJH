@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+    <link rel="stylesheet" href="css/new_file.css" />
+</head>
+<body>
+	<div class="option-jz">
+		<ul>
+			<li class="personal-jz act">个人捐赠</li>
+			<li class="group-jz">团体捐赠</li>
+			<li class="company-jz">公司捐赠</li>
+		</ul>
+	</div>
+
+	<form id="form" method="post" onsubmit="return false;">
+		<div>
+			<label>
+				<div id="username" style="display: inline">
+					姓&nbsp;&nbsp;名
+				</div>
+				<span>*</span>：
+			</label>
+
+			<input id="usernameholder" type="text" placeholder="请填写姓名" name="name" data-perverifi = "perxingming" class="perverifi">
+		</div>
+		<div id="contact-div">
+			<label>联系人 <span>*</span>：</label>
+			<input type="text" placeholder="请填写联系人" name="contactperson" data-perverifi = "perxingming" class="perverifi" >
+		</div>
+		<div>
+			<label>电子邮箱<span>*</span>：</label><input type="text" placeholder="请填写电子邮箱" name="email" data-perverifi = "peremail" class="perverifi">
+		</div>
+		<div>
+			<label>联系电话：</label><input type="text" placeholder="请填写联系电话" name="phone">
+		</div>
+		<div id="idcard-div">
+			<label>身份证号：</label><input type="text" placeholder="请填写身份证号" name="idcard" >
+		</div>
+		<div>
+			<label>联系地址：</label><input type="text" placeholder="请填写联系地址" name="address">
+		</div>
+		<div>
+			<label>是否校友：</label><input type="radio" name="schoolmates" value="yes" checked="checked" name="isclassmate"/>是
+				<input type="radio" name="schoolmates" value="no" name="isclassmate"/>否
+		</div>
+		<div>
+			<label>年&nbsp;&nbsp;级：</label><input type="text" placeholder="请填写年级" name="grade">
+		</div>
+		<div>
+			<label>学&nbsp;&nbsp;院：</label><input type="text" placeholder="请填写学院" name="academy">
+		</div>
+		<div>
+			<label>捐赠金额：</label><input type="text" placeholder="请填写捐赠金额 " name="money" id="perdonatorMoney">
+		</div>
+		<div>
+			<label>捐赠项目：</label><select class="jzxx-dl" style="height: 35px;width: 29%;margin-right: 5px;min-width: 50px;display: table-cell;" name="projectid">
+				<option>请选择</option>
+			</select>
+			<select style="height: 35px;width: 68%;" name="projectid" class="jzxx-xl">
+				<option>请选择</option>
+			</select>
+		</div>
+		<div>
+			<label>捐赠途径：</label><input type="radio" name="paytype" value="online" checked="checked"/>微信支付
+			<input type="radio" name="paytype" value="offline"/>线下支付
+		</div>
+		<div>
+			<label>是否匿名：</label>
+				<div class="anonymous">
+				<input type="radio" name="visible" value="yes" checked="checked"/>是
+				<input type="radio" name="visible" value="no"/>否
+				</div>
+		</div>
+		<button type="submit" class="perform-btn">提&nbsp;&nbsp;&nbsp;交</button>
+	</form>
+	 <div class="baoming-wrap"><a class="baoming" style="width:80px;height:80px; line-height:80px;">我要求助</a></div>
+    <div class="wrapmain">
+	<script>
+		
+		$(document).ready(function(){
+			$(".personal-jz").click(function(){
+				$("#username").html("姓&nbsp;&nbsp;名");
+				$("#usernameholder").attr("placeholder","请填写姓名");
+				$('input').val('');
+				$("#contact-div").hide();
+				$("#idcard-div").show();
+				$(".personal-jz").addClass("act").siblings().removeClass("act");
+			});
+			$(".group-jz").click(function(){
+				$("#username").html("团队名称");
+				$("#usernameholder").attr("placeholder","请填写团队名称");
+				$('input').val('');
+				$("#contact-div").show();
+				$("#idcard-div").hide();
+				$(".group-jz").addClass("act").siblings().removeClass("act");
+			});
+			$(".company-jz").click(function(){
+				$("#username").html("企业名称");
+				$("#usernameholder").attr("placeholder","请填写企业名称");
+				$('input').val('');
+				$("#contact-div").show();
+				$("#idcard-div").hide();
+				$(".company-jz").addClass("act").siblings().removeClass("act");
+			});
+			btn();
+
+			/**
+			 * 加载捐赠项目
+			 */
+			$.ajax({
+				type: "GET",
+				url: "/jjh/front/projectList.do",
+				dataType: "json",
+				success: function(data){
+					if(data){
+						$(".jzxx-dl").html('');
+
+						for(i = 0;i<data.length;i++){
+							if(data[i].pid == 1){
+								$(".jzxx-dl").append("<option data-id="+ data[i].projectId +">" + data[i].name + "</option>")
+							}
+						}
+					}
+
+				},
+				erro:function(){
+					alert("网络错误");
+				}
+			});
+
+			/**
+			 * 项目捐赠联动
+			 */
+			$(".jzxx-dl").change(function(){
+				$.ajax({
+					type: "get",
+					url: "/jjh/front/projectList.do" + "?projectId=" + $(".jzxx-dl option:checked").attr("data-id"),
+//					data:$(".jzxx-dl").attr("data-id"),
+					success: function(data){
+						if(data){
+							$(".jzxx-xl").html('');
+//
+							for(i = 0;i<data.length;i++){
+								$(".jzxx-xl").append("<option data-id="+ data[i].projectId +">" + data[i].name + "</option>");
+							}
+						}
+
+					},
+					erro: function(){
+						alert("网络错误")
+					}
+				});
+			});
+		});
+
+	
+		function btn(){
+			$(".perform-btn").on("click",function(){
+				var allinput = $(".perverifi");
+				var verifiarray = [];
+				var money = $("#perdonatorMoney").val();
+				$.map(allinput,function(obj,n){
+					var verifidata = $(obj).data("perverifi");
+					var value = $(obj).val();
+					if(!perverifi(verifidata,value)){
+						verifiarray.push("false");
+					}
+				})
+
+				if(verifiarray.length>0){
+					alert("为确保我们能顺利联系上您,请完善带*的内容");
+					return;
+				}
+
+				if(money<=0){
+					alert("捐款金额不能小于等于0");
+					return;
+				}
+				else {
+					$.ajax({
+						type:"post",
+						url:"",
+						data:$("#form").serialize(),
+						success:function(data){
+							if(data == "ERROR"){
+								alert("未知错误")
+							}
+							else{
+	//							alert("感谢您对重庆邮电大学教育事业的支持");
+								callPay(data);
+							}
+
+						},
+						erro:function(){
+							alert("网络错误")
+						}
+					})
+				}
+			})
+		}
+
+
+		function onBridgeReady() {
+			var pay;
+			var appId = pay.appId;
+			var timeStamp = pay.timeStamp;
+			var nonceStr =pay.nonceStr;
+			var Package = pay.package;
+			var signType = pay.signType;
+			var paySign = pay.paySign;
+			WeixinJSBridge.invoke('getBrandWCPayRequest', {
+				"appId" : appId,//"wx2421b1c4370ec43b", //公众号名称，由商户传入
+				"timeStamp" : timeStamp,//"1395712654", //时间戳，自1970年以来的秒数
+				"nonceStr" : nonceStr,//"e61463f8efa94090b1f366cccfbbb444", //随机串
+				"package" : "prepay_id="+Package,//"prepay_id=u802345jgfjsdfgsdg888",
+				"signType" : signType,//"MD5", //微信签名方式:
+				"paySign" : paySign,//"70EA570631E4BB79628FBCA90534C63FF7FADD89" //微信签名
+			}, function(res) { // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+				//alert(res.err_msg);
+				if (res.err_msg == "get_brand_wcpay_request:ok") {
+					alert("支付成功");
+				}
+				if (res.err_msg == "get_brand_wcpay_request:cancel") {
+					alert("交易取消");
+				}
+				if (res.err_msg == "get_brand_wcpay_request:fail") {
+					alert("支付失败");
+				}
+			});
+		}
+
+		function callPay() {
+			if (typeof WeixinJSBridge == "undefined") {
+				if (document.addEventListener) {
+					document.addEventListener('WeixinJSBridgeReady', onBridgeReady,
+							false);
+				} else if (document.attachEvent) {
+					document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+					document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+				}
+			} else {
+				onBridgeReady();
+			}
+		}
+
+		function perverifi(type,value){
+			var flag=false;
+			if(value){
+				flag=true;
+			}
+			return flag;
+		}
+	</script>
+</body>
+</html>

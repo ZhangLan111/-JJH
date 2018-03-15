@@ -1,0 +1,121 @@
+
+<div name="winDataListButtons" class="toobar" style="padding: 5px 1px 5px">
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-refresh',plain:true" onclick="refresh()">刷新</a>
+    <!--#include virtual="/system/getActions.do?module=donated"-->
+    | 所属系统：<input class="easyui-combotree" name="system_id" width="120px" data-options="required:true,url:'/system/getSystem.do',onLoadSuccess:function(node,data){getCurrWin().find('[textboxname=system_id]').combotree('setValue', data[0]['id']);setTimeout(function(){setParam();refresh();},0);},method:'get',editable: false,valueField:'id',textField:'text',onSelect:function(){setTimeout(function(){setParam();refresh();},0);}"/>
+    | 状态：<select name="donated_status" style="width:120px" class="easyui-combobox" data-options="editable: false,onSelect:function(record){
+                setTimeout(function(){setParam();refresh();},0);}">
+    <option value="-1" selected>不限</option>
+    <option value="1">已收到</option>
+    <option value="0">未收到</option>
+</select>
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="searchShow(this)">更多查询..</a>
+</div>
+
+<table name="winDataList" class="datagrid" style="height: 100%;width: 100%" data-options="cache:false,autoRowHeight:false,pageSize:20,fitColumns:true,pagePosition:'bottom',striped:true,rownumbers:true,singleSelect:true,pagination:true,method:'get'">
+    <thead>
+    <tr>
+        <th data-options="field:'ck',checkbox:true"></th>
+        <th data-options="field:'donated_name',align:'center',width:110">姓名</th>
+        <th data-options="field:'donated_is_schoolStudent',align:'center',width:80,formatter:function(value,rowData,index){
+            if(value==1){
+                return '是';
+            }else if(value==0){
+                return '否';
+            }
+        }">是否为本校学生</th>
+        <th data-options="field:'donated_mobile_phone',align:'center',width:120">联系电话</th>
+        <th data-options="field:'donated_money',align:'center',width:110">受捐赠金额</th>
+        <th data-options="field:'donated_status',align:'center',width:80,formatter:function(value,rowData,index){
+            if(value==1){
+                return '已收到';
+            }else if(value==0){
+                return '未收到';
+            }
+        }">状态</th>
+        <th data-options='field:"donated_id",align:"center",width:110,formatter:function(value,rowData,index){
+            return "<a style=\"color:blue\" onclick=\"changeStatus("+rowData.donated_id+",&apos;"+rowData.donated_name+"&apos;)\"><修改状态></a>";
+        }'>操作</th>
+    </tr>
+    </thead>
+</table>
+
+<textarea name="winEditHtml" style="display: none;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding: 12px 12px 0 12px;">
+            <form name="obj" method="post" class="c-form">
+                <input type="hidden" name="donated_id">
+                <input type="hidden" id="option_type" name="option_type" value="add"><!--判断类型 必须包含-->
+                <table class="table">
+                    <tr>
+                        <td class="label-2">姓名：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox" disabled name="donated_name"></td>
+                        <td class="label-2">性别：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox" disabled name="donated_gender" ></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">是否为本校学生：</td>
+                        <td class="value-2">
+                            <select class="easyui-combobox easyui-validatebox" data-options="editable:false" disabled name="donated_is_schoolStudent">
+                                <option value="0">不是</option>
+                                <option value="1">是</option>
+                            </select>
+                        </td>
+                        `                   <td class="label-2">年级：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" name="donated_grade"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">联系电话：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox"  name="donated_mobile_phone"></td>
+                        <td class="label-2">邮箱：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" name="donated_email"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">受捐赠项目：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox"  name="donated_project"></td>
+                        <td class="label-2">受捐赠金额：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" name="donated_money"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">时间：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox easyui-datebox " data-options="editable:false" name="donated_donate_time"></td>
+                        <td class="label-2">状态：</td>
+                        <td class="value-2">
+                            <select class="easyui-combobox easyui-validatebox" data-options="editable:false" name="donated_status">
+                                <option value="1">已收到</option>
+                                <option value="2">未收到</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="c-w-t" data-options="region:'south'">
+            <#buttons/>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-close',plain:true" onclick="closeCurrWin()">关闭</a>
+        </div>
+    </div>
+</textarea>
+<script>
+    !function(){
+        var module_id=getUrlParam('?_=1464595051771',"module_id");
+        listBind({
+            windowWidth:800,
+            windowHeight:320,
+            keyField:'donated_id',
+            save:"/jjh/donated/save.do",
+            show:"/jjh/donated/show.do",
+            del: "/jjh/donated/del.do",
+            search:[{field:'donated_name',title:'姓名',c_dataType:'string'},
+                {field:'donated_donate_time',title:'捐赠时间',c_dataType: 'date'}
+            ],
+            listUrl: "/jjh/donated/list.do",
+            param:{}},true);
+    }();
+    function changeStatus(value,value2){
+        openWinUrl(450, 170,'修改状态','/jjh/donated/changeStatus.do?donated_id='+value,"",null,null);
+    }
+    function exportData(){
+       openWinUrl(450, 170,'导入文件','/jjh/donated/showExportWeb.do',"",null,null);
+    }
+</script>

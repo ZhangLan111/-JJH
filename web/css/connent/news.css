@@ -1,0 +1,153 @@
+.wrapmain{
+	width:100%;
+	position:relative;
+	padding-bottom: 50px;
+	overflow:hidden;
+}
+.bg-tip{
+	width:990px;
+	margin:0 auto;
+	display:block;
+	position:relative;
+	z-index:2;
+}
+.mian{
+	width:990px;
+	margin:0 auto;
+	padding-top:23px;
+	position:relative;
+	z-index:2;
+}
+.leftnav{
+	float:left;
+	width:171px;
+	padding-left:25px;
+}
+.leftnav li a{
+	display:block;
+	padding-left:5px;
+}
+.leftnav .active a{
+	background-color: #028b5f;
+	color: #fff;
+}
+.leftnav a:hover{
+	cursor:pointer;
+	background-color: #028b5f;
+	color: #fff !important;
+}
+.leftnav .linerow{
+	height:3px;
+	background-color:#028b5f;
+	position:absolute;
+	top: 71px;
+	right: 832px;
+	width:100%;
+}
+.leftnav h3{
+	height:48px;
+	line-height:48px;
+	border-bottom:solid 3px #028b5f;
+	color:#006041;
+	font-size:16px;
+	padding-left:5px;
+	font-weight:400;
+}
+.leftnav li{
+	line-height:33px;
+	font-size:13px;
+	color:#555555;
+	border-bottom:solid 1px #c2e8e0;
+}
+.leftnav li:hover{
+	cursor:pointer;
+	color:#028b5f;
+}
+.leftnav .right{
+	background: url(../../img/news/right-row.png) no-repeat 60px center;
+}
+.leftnav .bottom{
+	background: url(../../img/news/bottom-row.png) no-repeat 60px center;
+}
+.context{
+	float:left;
+	padding-top:48px;
+	padding-left: 61px;
+	width:724px;
+	position:relative;
+}
+.context .row-line{
+	position:absolute;
+	top:133px;
+	left:20px;
+	width:1px;
+	height: 85%;
+	background-color:#57b294;
+	display:none;
+}
+.context .tipheader{
+	height:32px;
+	line-height:32px;
+	border-bottom:solid 1px #bfe7df;
+	padding-bottom:2px;
+}
+.context .tipheader h3{
+	border-bottom:solid 2px #028b5f;
+	color:#E8F5F1;
+	float:left;
+	padding: 0 10px;
+	font-size:16px;
+	font-weight:400;
+}
+.context .tipheader p{
+	float:right;
+	color:#444544;
+}
+.newstext{
+	width:590px;
+	margin:0 auto;
+	padding-top:33px;
+	color:#555555;
+}
+.newstext h2{
+	font-size:18px;
+	line-height:36px;
+	text-align:center;
+	border-bottom:solid 1px #969696;
+	font-weight:400;
+}
+.newstext .newinfo{
+	font-size:14px;
+	line-height:43px;
+	text-align:center;
+	border-bottom:solid 1px #969696;
+	font-weight:400;
+}
+.newcontent{
+	padding-top:10px;
+}
+.newcontent p{
+	line-height:34px;
+	text-indent:30px;
+	font-size:14px;
+}
+.wrapmain .bg{
+	height:100%;
+	position:absolute;
+	max-height: 643px;
+	top:0px;
+	left:0px;
+	z-index:1;
+	width:100%;
+}
+/* 信息详细信息 */
+.news-content-img{
+	width:500px;
+	height:333px;
+	margin:20px auto;
+	display:block;
+}
+.footer-news{
+	width:100%;
+	text-align:center;
+}

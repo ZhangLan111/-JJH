@@ -1,0 +1,144 @@
+
+<div name="winDataListButtons" class="toobar" style="padding: 5px 1px 5px">
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-refresh',plain:true" onclick="refresh()">刷新</a>
+
+   <!-- <a class="sf-show easyui-linkbutton" data-options="iconCls:'icon-show',plain:true" onclick="showRow('show','查看')">查看</a>-->
+   <!-- <a class="sf-add easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="addRow()">添加</a>-->
+    <!--<a class="sf-del easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true" onclick="deleteRow()">删除</a>-->
+    <a class="sf-edit easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="showRow('edit','编辑')">编辑</a>
+    <!--#include virtual="/system/getActions.do?module=link"-->
+
+    | 所属系统：<input class="easyui-combotree" name="system_id" width="120px" data-options="required:true,url:'/system/getSystem.do',onLoadSuccess:function(node,data){getCurrWin().find('[textboxname=system_id]').combotree('setValue', data[0]['id']);setTimeout(function(){setParam();refresh();},0);},method:'get',editable: false,valueField:'id',textField:'text',onSelect:function(){setTimeout(function(){setParam();refresh();},0);}"/>
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="searchShow(this)">更多查询..</a>
+</div>
+
+<table name="winDataList" class="datagrid" style="height: 100%;width: 100%" data-options="cache:false,autoRowHeight:false,pageSize:20,fitColumns:true,pagePosition:'bottom',striped:true,rownumbers:true,singleSelect:true,pagination:true,method:'get'">
+    <thead>
+    <tr>
+        <th data-options="field:'ck',checkbox:true"></th>
+        <th data-options="field:'system_name',align:'center',width:130">所属系统</th>
+        <th data-options="field:'link_name',align:'left',width:300">链接地址</th>
+        <th data-options="field:'puser_time',align:'center',width:140">发布时间</th>
+        <th data-options="field:'pdept_name',align:'center',width:130">发布部门</th>
+        <th data-options="field:'judge_index',align:'center',width:130">是否在前台显示该链接</th>
+    </tr>
+    </thead>
+</table>
+
+<textarea name="winEditHtml" style="display: none;">
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding: 12px 12px 0 12px;">
+            <form name="obj" method="post" class="c-form">
+                <input type="hidden" name="link_id">
+                <input type="hidden" name="system_id" id="system_id">
+                <input type="hidden" name="module_id" value="8">
+                <input type="hidden" name="pdept_id">
+                <input type="hidden" id="option_type" name="option_type" value="add"><!--判断类型 必须包含-->
+                <table class="table">
+                    <tr>
+                        <td class="label-2">发布人：</td>
+                        <td class="value-2"><input type="hidden" name="puser_name"></td>
+                        <td class="label-2">发布时间：</td>
+                        <td class="value-2"><input type="hidden"  name="puser_time" ></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">所属系统：</td>
+                        <td class="value-2"><input type="hidden" name="system_name"></td>
+                        <td class="label-2">发布部门：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" name="pdept_name" data-options="editable:false,required:true,missingMessage:'该输入项为必输项',buttonIcon:'icon-search',onClickButton:function(){ChoiceBaseDialog('/jjh/link/getDept.do?system_id='+getCurrWin().find('[name=system_id]').val(),false,true,getObj(this,'pdept_id'),getObj(this,'pdept_name','textboxname'));}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">链接地址:</td>
+                        <td  class="value-2" ><input class="easyui-validatebox easyui-textbox" name="link_name" data-options="required:true,missingMessage:'该输入项为必输项',validType:'length[2,100]'" style="width: 100%"/></td>
+                        <td class="label-2">是否为首页链接：</td>
+                        <td class="value-2">
+                            <select class="easyui-combobox easyui-validatebox" data-options="editable:false" name="link_status">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">链接url:</td>
+                        <td colspan="3" class="value-2" ><input class="easyui-validatebox easyui-textbox" name="link_url" data-options="required:true,missingMessage:'该输入项为必输项',validType:'length[2,100]'" style="width: 100%"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="c-w-t" data-options="region:'south'">
+           <!-- <#buttons/>-->
+            <a name="button_save" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="save()">保存</a>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-close',plain:true" onclick="closeCurrWin()">关闭</a>
+        </div>
+    </div>
+    <!--<script>
+        function showEdit(obj){
+            var ue = UE.getEditor("container");
+            ue.setEnabled();
+            setVal(getObj(obj, "option_type", null), "edit");
+            var pp = $(obj).parent();
+            $(obj).parent().empty();
+            pp.append($("<a name=\"button_save\" class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-save',plain:true\" onclick=\"save()\">保存</a>")).append("<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-close',plain:true\" onclick=\"closeCurrWin()\">关闭</a>");
+            $.parser.parse(pp);
+            $("form td p").remove();
+            $("form").removeClass("hide");
+
+            if(getParentQuery().afterEdit){
+                getParentQuery().afterEdit();
+            }
+        }
+    </script>-->
+</textarea>
+<script>
+    !function(){
+        var module_id=getUrlParam('?<!--#echo var="QUERY_STRING"-->',"module_id");
+        listBind({
+            windowWidth:800,
+            windowHeight:250,
+            keyField:'link_id',
+            save:"/jjh/link/save.do?module_id="+73,
+            show:"/jjh/link/show.do",
+            del: "/jjh/link/del.do",
+            search:[{field:'link_name',title:'链接地址',c_dataType:'string'},//c_range: ['测试值', '测试值2', '测试值3']
+                {field:'pdept_name',title:'发布部门',c_dataType: 'string'},
+                {field:'puser_time',title:'发布时间',c_dataType: 'date'}
+            ],
+            listUrl: "/jjh/link/list.do?module_id="+73,
+            param:{},
+            afterAdd:function(){
+                $.ajax({
+                    url:"/system/getUserName.do",
+                    dataType:"json",
+                    success:function(data){
+                        var win=getCurrWin();
+                        win.find('[name=puser_name]').val(data.puser_name);
+                        win.find('[name=system_name]').val(data.system_name);
+                        win.find('[name=system_id]').val(data.system_id);
+                        win.find('[name=puser_name]').parent().append("<p>"+data.puser_name+"</p>");
+                        win.find('[name=puser_time]').parent().append("<p>"+data.puser_time+"</p>");
+                        win.find('[name=system_name]').parent().append("<p>"+data.system_name+"</p>");
+                    }
+                });
+            },
+            afterEdit:function(){
+                $.ajax({
+                    url:"/system/getUserName.do",
+                    dataType:"json",
+                    success:function(data){
+                        var win=getCurrWin();
+                        win.find('[name=puser_name]').val(data.puser_name);
+                        win.find('[name=system_name]').val(data.system_name);
+                        win.find('[name=system_id]').val(data.system_id);
+                        win.find('[name=puser_name]').parent().append("<p>"+data.puser_name+"</p>");
+                        win.find('[name=puser_time]').parent().append("<p>"+data.puser_time+"</p>");
+                        win.find('[name=system_name]').parent().append("<p>"+data.system_name+"</p>");
+                    }
+                });
+            }
+        },true);
+    }();
+
+</script>

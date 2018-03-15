@@ -1,0 +1,193 @@
+<!--非现金类捐赠类-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>重邮教育基金会</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="重庆,邮电,大学,cqupt,捐赠" name="Keywords">
+    <meta name="description" content="重庆邮电大学教育基金会是2012年8月31日经重庆市教委批准，于2012年11月9日经重庆市民政局登记注册成立的全国性非公募基金会">
+    <link rel="stylesheet" href="../css/connent/donation.css" />
+    <link rel="stylesheet" href="../css/public/reset.css">
+    <link rel="stylesheet" href="../css/public/header.css">
+    <link rel="stylesheet" href="../css/public/footer.css">
+</head>
+<body>
+<!--#include virtual="/jjh/web/public/need_top.html"-->
+<div class="wrapmain">
+    <img src="../img/news/bg-tip.jpg" alt="" class="bg-tip">
+    <div class="mian">
+        <div class="leftnav">
+            <h3>捐赠项目</h3>
+            <ul>
+               <!-- <li class="active"><a href="#">软件类捐赠</a></li>
+                <li><a href="donation_hardware.shtml">硬件类捐赠</a></li>
+                <li><a href="donation_non-cash.shtml">其他非现金类捐赠</a></li>-->
+            </ul>
+            <div class="linerow"></div>
+        </div>
+        <div class="context">
+            <div class="newswrap">
+                <div class="tipheader">
+                    <h3>软件类捐赠</h3>
+                    <p><a href="../public/index.shtml">首页</a>>>捐赠项目>>非现金类捐赠</p>
+                </div>
+                <div class="tab-change">
+                   <!-- <p class="active" data-id="1">微软向重庆邮电大学捐赠Office 365</p>
+                    <p data-id="2">甲骨文捐赠软件超2亿美元</p>-->
+                </div>
+                <div class="newscontent">
+
+                </div>
+               <!-- <div class="newstext show">
+                    <h2>微软向重庆邮电大学捐赠Office 365</h2>
+                    <p>微软全球资深副总裁，大中华区董事长兼首席执行官贺乐赋(Ralph Haupter)先生表示：“培育人才、扶持创新始终是微软在华的重要目标。在过去的20年里，我们一直秉承‘扶持创新、植根中国’的宗旨，致力于在教育、创新、人才培养、环境保护以及公益项目等方面持续投入。我们希望通过协助非营利组织提高自身能力来服务广大人民，为和谐社会的建设贡献绵薄之力。”</p>
+                </div>
+                <div class="newstext" style="display: none;">
+                    <h2>甲骨文捐赠软件超2亿美元</h2>
+                    <p>甲骨文政府事务及业务开发副总裁严旋对合作计划进行了介绍：在大学教育合作方面，甲骨文将为计算机科学和技术专业、电子商务、财务会计、物流管理和人力资源管理提供教学实验提供软件和技术支持，同时支持学校的课程和教材建设以及骨干教师的培训；在高等职业教育方面，公司将为高职“计算机应用技术类”专业课程提供软件和技术支持，同时为专业课程建设提供课程内容并为高职院校提供骨干教师的培训；在基础教育方面，公司将向中国100万个中小学师生提供Think.com网络学习平台及相关技术支持。 </p>
+                </div>-->
+            </div>
+            <p class="row-line"></p>
+        </div>
+    </div>
+    <img src="../img/news/bg.png" alt="" class="bg">
+</div>
+<script type="text/javascript" src="../js/iframe/jquery-1.11.3.min.js" ></script>
+<script>
+
+    $(document).ready(function(){
+        $.ajax({
+            type: "GET",
+            url: "/jjh/front/projectList.do?projecttype=2", //一级导航数据
+            dataType: "json",
+            success: function(data){
+
+
+                $(".leftnav ul").html('');
+                for(i = 0;i<data.length;i++){
+                    if(data[i].pid == 1){
+                        $(".leftnav ul").html("<li><a href='#' data-id="+ data[i].project_id +">"+ data[i].name +"</a></li>")
+                    }
+                }
+
+                $($(".leftnav ul li")[0]).addClass("active");
+
+                var a = $(".leftnav ul li a")[0];
+                //二级导航数据
+                $.ajax({
+                    type:"post",
+                    url:"/jjh/front/projectList.do"+ "?projecttype=2&projectId=" + $(a).attr("data-id"),
+                    success: function(data){
+                        console.log(data);
+                        var k =1;
+
+                        for(i = 0;i<data.length;i++){
+                            $(".tab-change").append("<p id='t"+ k +"'data-id='"+ k +"'>" + data[i].name + "</p>");
+                            k = k + 1;
+                        }
+
+                        for(i = 0;i<data.length;i++){
+                            $(".newscontent").append("<div class='newstext show' style='display:none'>" + data[i].description + "</div>")
+                        }
+
+                        $($(".tab-change p")[0]).addClass("active")
+                        $($(".newstext")[0]).css("display","block");
+                        liclick();
+
+                        $(function(){
+                            $(function(){
+                                var start = 0;
+                                $(".tab-change p").on("click",function(){
+                                    var _index = Number($(this).data("id"))-1;
+                                    $(this).parents(".tab-change").find('p').removeClass('active')
+                                    $(this).addClass('active')
+                                    $('.newstext.show').fadeOut(100);
+                                    $('.newstext').eq(_index).addClass('show').fadeIn(400)
+                                })
+                            })
+                        })
+
+                    },
+                    error: function(data){
+                        alert("网络错误");
+                    }
+                })
+
+
+
+            },
+            error: function(data){
+                alert("网络错误");
+            }
+        });
+    })
+
+    function liclick(){
+        $(".leftnav ul li").on("click",function(){
+            $(".tab-change").html("");
+            $(".newscontent").html("");
+            $(this).addClass("active").siblings().removeClass("active");
+            $.ajax({
+                type: "post",
+                url: "/jjh/front/projectList.do" + "?projecttype=2&projectId=" + $(this).find("a").attr("data-id"),
+                success: function(data){
+
+                    var k =1;
+
+                    for(i = 0;i<data.length;i++){
+                        $(".tab-change").append("<p id='t"+ k +"'data-id='"+ k +"'>" + data[i].name + "</p>");
+                        k = k + 1;
+                    }
+
+                    for(i = 0;i<data.length;i++){
+                        $(".newscontent").append("<div class='newstext show' style='display:none'>" + data[i].description + "</div>")
+                    }
+
+                    $($(".tab-change p")[0]).addClass("active")
+                    $($(".newstext")[0]).css("display","block");
+
+                    $(function(){
+                        $(function(){
+                            var start = 0;
+                            $(".tab-change p").on("click",function(){
+                                var _index = Number($(this).data("id"))-1;
+                                $(this).parents(".tab-change").find('p').removeClass('active')
+                                $(this).addClass('active')
+                                $('.newstext.show').fadeOut(100);
+                                $('.newstext').eq(_index).addClass('show').fadeIn(400)
+                            })
+                        })
+                    })
+
+                },
+                error: function(data){
+                    alert("网络错误");
+                }
+            });
+        })
+    }liclick();
+
+
+    $(function(){
+        $(function(){
+            var start = 0;
+            $(".tab-change p").on("click",function(){
+                var _index = Number($(this).data("id"))-1;
+                $(this).parents(".tab-change").find('p').removeClass('active')
+                $(this).addClass('active')
+                $('.newstext.show').fadeOut(100);
+                $('.newstext').eq(_index).addClass('show').fadeIn(400)
+            })
+        })
+    })
+</script>
+
+<!-- 内容区测展 -->
+<!--#include virtual="/jjh/web/public/need_deep.html" -->
+
+<script type="text/javascript" src="../js/connent/nav.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+.img-title{
+	width: 100%;
+	position:relative;
+	background-color: #f9f9f9;
+	z-index: -2;
+	padding-bottom:60px;
+}
+.img-title img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+.title{
+	width: 1000px;
+	height: 250px;
+	position: relative;
+	margin: 0 auto;
+}
+.title h2, .title h2 a{
+	color: #fff;
+	font-size: 16px;
+	letter-spacing: 5px;
+}
+.title h2{
+	padding-top: 15px;
+	padding-left: 5px;
+}
+.title h2 a{
+	padding-right: 10px;
+}
+.title h2 span{
+	padding-left: 10px;
+}
+.title h3{
+	font-family: "宋体";
+	font-size: 20px;
+	position: absolute;
+	letter-spacing: 8px;
+	top:210px;
+	left: 48%;
+}
+.content{
+	width: 1000px;
+	margin: 0 auto;
+	margin-top: 70px;
+	position: relative;
+}
+.cont-h4{
+	color: #1b3405;
+	font-size: 18px;
+	letter-spacing: 5px;
+	padding-bottom:30px;
+	font-size:30px;
+}
+.content ul li{
+	line-height:40px;
+	font-size:16px;
+}
+.content ul li span{
+	margin-right:30px;
+}

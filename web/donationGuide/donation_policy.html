@@ -1,0 +1,127 @@
+<!--捐赠政策-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>重邮教育基金会</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../css/public/reset.css"/>
+    <link rel="stylesheet" href="../css/public/header.css"/>
+    <link rel="stylesheet" href="../css/public/footer.css"/>
+    <link rel="stylesheet" href="../css/connent/donation.css"/>
+</head>
+<body>
+<!--#include virtual="/jjh/web/public/need_top.html"-->
+<div class="wrapmain">
+    <img src="../img/news/bg-tip.jpg" alt="" class="bg-tip">
+
+    <div class="mian">
+        <div class="leftnav">
+            <h3>捐赠政策</h3>
+            <ul class="leftnav-content">
+            </ul>
+            <div class="linerow"></div>
+        </div>
+        <div class="context">
+            <div class="newswrap">
+                <div class="tipheader">
+                    <h3>捐赠政策</h3>
+
+                    <p><a href="../public/index.shtml">首页</a>>>捐赠指南>>捐赠政策</p>
+                </div>
+                <div class="newstext">
+                </div>
+                <div style="margin-top: 50px;text-align: right;">
+                    <a href="javascript:void(0)" class="pre" onclick="prePage(this);">上一页</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="javascript:void(0)" class="next" onclick="nextPage(this);">下一页</a>
+                </div>
+            </div>
+            <p class="row-line"></p>
+        </div>
+    </div>
+    <img src="../img/news/bg.png" alt="" class="bg">
+</div>
+<script type="text/javascript" src="../js/iframe/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/connent/nav.js"></script>
+<script>
+    !function () {
+        $(".pre").hide();
+        $(".next").hide();
+        $.get("/jjh/front/policy.do?policy=0", function (trees) {
+            for(var tree in trees){
+                if(tree == 0){
+                    var link = '<li onclick=\"getPages(this);\" class=\"active\"><a name=\"'+ trees[tree].policyId + "\" href=\"#\">" + trees[tree].title +"</a>";
+                }else{
+                    var link = "<li onclick=\"getPages(this);\"><a name='"+ trees[tree].policyId + "' href='#'>" + trees[tree].title +"</a>";
+                }
+                $(".leftnav-content").append(link);
+            }
+            if(trees.length > 0){
+                $.get("/jjh/front/policy.do?policy=" + trees[0].policyId + "&page=0", function (pages) {
+                    window.pages = pages;
+                    window.page = 0;
+                    if(pages.length > 0){
+                        $.get("/jjh/front/policy.do?policy="+trees[0].policyId+"&page="+pages[0], function (page) {
+                            $(".newstext").html(page.content);
+                        })
+                    }
+                    if(pages.length > 1){
+                        $(".next").show();
+                    }
+                })
+            }
+        });
+    }();
+    function getPages(ee) {
+        $(".pre").hide();
+        $(".next").hide();
+        $(".leftnav-content li").removeClass("active");
+        $(ee).addClass("active");
+        var policyId = $(ee).find("a").attr("name");
+        $.get("/jjh/front/policy.do?policy="+policyId+"&page=0", function (pages) {
+            window.pages = pages;
+            window.page = 0;
+            if(pages.length == 0){
+                return false;
+            }
+            $.get("/jjh/front/policy.do?policy="+policyId+"&page="+pages[0], function (page) {
+                $(".newstext").html(page.content);
+            });
+            if(pages.length > 1){
+                $(".next").show();
+            }
+        });
+    }
+    function prePage(ee){
+        var policyId = $(".leftnav-content li[class=\"active\"]").find("a").attr("name");
+        console.log(policyId);
+        $.get("/jjh/front/policy.do?policy="+policyId+"&page="+(window.pages[--window.page]), function (page) {
+            $(".newstext").html(page.content);
+        });
+        if(window.page == 0){
+            $(".pre").hide();
+        }
+        if(window.page < (window.pages.length - 1)){
+            $(".next").show();
+        }
+    }
+    function nextPage(ee){
+        var policyId = $(".leftnav-content li[class=\"active\"]").find("a").attr("name");
+        console.log(policyId);
+        $.get("/jjh/front/policy.do?policy="+policyId+"&page="+(window.pages[++window.page]), function (page) {
+            $(".newstext").html(page.content);
+        });
+        if(window.page >= (window.pages.length - 1)){
+            $(".next").hide();
+        }
+        if(window.page > 0){
+            $(".pre").show();
+        }
+    }
+</script>
+<!-- 内容区测展 -->
+<!--#include virtual="/jjh/web/public/need_deep.html" -->
+</body>
+</html>

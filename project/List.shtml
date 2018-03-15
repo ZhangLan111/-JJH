@@ -1,0 +1,181 @@
+<div name="winDataListButtons" class="toobar" style="padding: 5px 1px 5px">
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-refresh',plain:true" onclick="refresh()">刷新</a>
+    <!--#include virtual="/system/getActions.do?module=project"-->
+    | 所属系统：<input class="easyui-combotree" name="system_id" width="120px" data-options="required:true,url:'/system/getSystem.do',onLoadSuccess:function(node,data){
+        getCurrWin().find('[textboxname=system_id]').combotree('setValue', data[0]['id']);
+        setTimeout(function(){
+            setParam();
+            refresh();
+        },0);
+     },method:'get',editable: false,valueField:'id',textField:'text',onSelect:function(){setTimeout(function(){setParam();refresh();},0);}"/>
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="searchShow(this)">更多查询..</a>
+</div>
+
+<table name="winDataList" class="treegrid" style="height: 100%;width: 100%" data-options="cache:false,autoRowHeight:false,pageSize:20,fitColumns:true,pagePosition:'bottom',striped:true,rownumbers:true,singleSelect:true,pagination:true,method:'get',treeField:'name',idField:'project_id'">
+    <thead>
+    <tr>
+        <th data-options="field:'ck',checkbox:true"></th>
+        <th data-options="field:'project_id',width:20">项目编号</th>
+        <th data-options="field:'name',width:100">项目树</th>
+        <th data-options="field:'description',width:130,formatter:function(data,rowData,index){
+            //去掉所有HTML标签
+            data = data.replace(/<[^>]+>/g,'');
+            return data;
+        }">项目描述</th>
+        <th data-options="field:'projecttype',align:'center',width:40,formatter:function(value,rowData,index){
+            if(value==1){
+                return '现金类捐赠';
+            }else if(value==2){
+                return '非现金类捐赠';
+            }
+        }">项目类型</th>
+
+        <th data-options="field:'visible',align:'center',width:30,formatter:function(value,rowData,index){
+            if(value==0){
+                return '不显示';
+            }else if(value==1){
+                return '显示';
+            }
+        }">是否显示</th>
+        <th data-options="field:'logoUrl',width:25">图标地址</th>
+    </tr>
+    </thead>
+</table>
+
+<textarea name="winEditHtml" style="display: none;">
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding: 12px 12px 0 12px;">
+            <form name="obj" method="post" class="c-form">
+                <!--<input type="hidden" name="project_id" id="project_id">-->
+                <input type="hidden" name="pid"/>
+                <input type="hidden" name="system_id" id="system_id">
+                <input type="hidden" name="id" id="id">
+                <input type="hidden" name="module_id" value="72">
+                <input type="hidden" name="description" id="description"/>
+                <input type="hidden" name="projecttpehidden" value=""/>
+
+                <input type="hidden" id="option_type" name="option_type" value="add"><!--判断类型 必须包含-->
+
+                <table class="table">
+                    <tr>
+                        <td class="label">父级项目</td>
+                        <td class="value">
+                            <input class="easyui-textbox easyui-validatebox"  name="parent_name" value="请选择一个父级项目" data-options="editable:false,required:true,missingMessage:'请选择一个上级项目',buttonIcon:'icon-search',onClickButton:function(){var system_id=getObj(this,'system_id').val();if($('form [name=pid]').val()=='0'){alert('根项目的父节点不可更改');return false;};ChoiceBaseDialog('/jjh/project/list.do?system_id='+system_id,false,false,getObj(this,'pid'),getObj(this,'parent_name','textboxname'));}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="label">名称</td>
+                        <td class="value"><input class="easyui-textbox easyui-validatebox" type="text" name="name" data-options="validType:'maxLength[3]'"/></td>
+                    </tr>
+                    <tr>
+                        <td class="label">类型：</td>
+                        <td class="value">
+                            <select name="projecttype" class="easyui-combobox easyui-validatebox" data-options="required:true,editable:false,missingMessage:'请选择项目类型'" name="dept" >
+                                <option value="1">现金类捐赠</option>
+                                <option value="2">非现金类捐赠</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<td class="label">图标地址</td>-->
+                        <!--<td class="value" ><input class="easyui-textbox easyui-validatebox" type="text" name="logoUrl" data-options="validType:'maxLength[5]'"/></td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <td class="value" colspan="4"><script id="container" name="description" type="text/plain"></script></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="c-w-t" data-options="region:'south'">
+            <#buttons/>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-close',plain:true" onclick="closeCurrWin()">关闭</a>
+        </div>
+    </div>
+        <script>
+            !function(){
+                var ue = UE.getEditor("container");
+                ue.ready(function() {
+                    if($("#option_type").val() == "show"){
+                        ue.setDisabled();
+                    }
+                    ue.setContent($("#description").val());
+                    $("#description").remove();
+                });
+            }();
+            function showEdit(obj){
+                var ue = UE.getEditor("container");
+                ue.setEnabled();
+                setVal(getObj(obj, "option_type", null), "edit");
+                var pp = $(obj).parent();
+                $(obj).parent().empty();
+                pp.append($("<a name=\"button_save\" class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-save',plain:true\" onclick=\"save()\">保存</a>")).append("<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-close',plain:true\" onclick=\"closeCurrWin()\">关闭</a>");
+                $.parser.parse(pp);
+                $("form td p").remove();
+                $("form").removeClass("hide");
+
+                if(getParentQuery().afterEdit){
+                    getParentQuery().afterEdit();
+                }
+            }
+        </script>
+</textarea>
+<script>
+    !function(){
+        var module_id=getUrlParam('?<!--#echo var="QUERY_STRING"-->',"module_id");
+        listBind({
+            windowWidth:800,
+            windowHeight:640,
+            keyField:'project_id',
+            save:"/jjh/project/save.do",
+            show:"/jjh/project/show.do",
+            del: "/jjh/project/del.do",
+            search:[{field:'project_id',title:'项目编号',c_dataType:'int'},
+                {field:'name',title:'项目名称',c_dataType: 'string'}
+            ],
+            listUrl: "/jjh/project/list.do",
+            param:{},
+            afterAdd:function(){
+            $.ajax({
+                url:"/jjh/getUserName.do",
+                dataType:"json",
+                success:function(data){
+                    var win=getCurrWin();
+                    win.find('[name=system_name]').val(data.system_name);
+                    win.find('[name=system_id]').val(data.system_id);
+                }
+            });
+            },
+            beforeSave:function(){
+                var win=getCurrWin();
+                var pid=win.find('[name=pid]').val();
+                if(!pid){
+                    alert("请选择一个父级项目");
+                    return false;
+                }
+
+                var name=win.find('[name=name]').val();
+                if(!name){
+                    alert("请填写类型名称");
+                    return false;
+                }
+
+
+                return true;
+
+            },
+            afterEdit:function(){
+            $.ajax({
+                url:"/jjh/getUserName.do",
+                dataType:"json",
+                success:function(data){
+                    var win=getCurrWin();
+                    win.find('[name=system_name]').val(data.system_name);
+                    win.find('[name=system_id]').val(data.system_id);
+                }
+            });
+            }
+    },true);
+    }();
+</script>

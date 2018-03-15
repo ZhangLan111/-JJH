@@ -1,0 +1,304 @@
+<!--感谢平台页面-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>重邮教育基金会</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="重庆,邮电,大学,cqupt,捐赠" name="Keywords">
+    <meta name="description" content="重庆邮电大学教育基金会是2012年8月31日经重庆市教委批准，于2012年11月9日经重庆市民政局登记注册成立的全国性非公募基金会">
+    <link rel="stylesheet" href="../css/public/reset.css"/>
+    <link rel="stylesheet" href="../css/public/header.css"/>
+    <link rel="stylesheet" href="../css/public/footer.css"/>
+    <link rel="stylesheet" href="../css/public/thank.css"/>
+    <script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+<!--#include virtual="/jjh/web/public/need_top.html" -->
+<div class="baoming-wrap"><a class="baoming" style="width:80px;height:80px; line-height:80px;">我要感谢</a></div>
+<div class="wrapmain">
+    <img src="../img/news/bg-tip.jpg" alt="" class="bg-tip">
+
+    <div class="mian">
+        <div class="leftnav">
+            <h3>求助感谢</h3>
+            <ul>
+                <li><a href="help.shtml">求助平台</a></li>
+                <li class="active"><a href="thank.shtml">感谢平台</a></li>
+            </ul>
+            <div class="linerow"></div>
+        </div>
+        <div class="context">
+            <div class="newlist">
+                <div class="tipheader">
+                    <h3>感谢平台</h3>
+
+                    <p>首页>>求助感谢>>感谢平台</p>
+                </div>
+                <!-- 这里要 -->
+                <ul id="ul">
+                    <!-- 这里带参返回到servlet又到页面加载内容 -->
+                </ul>
+                <div class="pagecontrol">
+                    <span>共1页</span>
+                    <span>当前第 1 / 1 页</span>
+                        <span>
+                        	<a href="#" class="up-all">第一页&nbsp;&nbsp;</a>
+                            <a href="#" class="up">上一页&nbsp;&nbsp;</a>
+        					<a href="#" class="down">下一页&nbsp;&nbsp; </a>
+        					<a href="#" class="down-all">最后一页&nbsp;&nbsp;</a>
+        				</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="../img/news/bg.png" alt="" class="bg">
+</div>
+<div class="baoming-content">
+    <div class="baoming-data">
+        <div class="baoming-title">
+            <span style="float:left;margin-left:30px;margin-top:18px;font-size:16px;">感谢</span>
+            <span class="close-button"
+                  style="float:right;margin-right:20px;margin-top:14px;font-size:18px;cursor:pointer">x</span>
+        </div>
+        <div class="baoming-neirong">
+            <!-- action里填写 -->
+            <form class="baoming-form" action="" method="post" id="submitform">
+               <table>
+                        <tr>
+                            <td>姓名：</td>
+                            <td>
+                                <input type="text" name="helpName" class="helpName">
+                            </td>
+                        </tr>
+                        <tr class="tishi" id="name" style="height: 20px;">
+                             <td class="name" style="font-size: 12px;"></td>
+                        </tr>
+                        <tr>
+                            <td>学号：</td>
+                            <td>
+                                <input type="text" name="helpStuid" class="helpStuid">
+                            </td>
+                        </tr>
+                        <tr class="tishi" id="xuehao" style="height: 20px;">
+                             <td class="xuehao" style="font-size: 12px;"></td>
+                        </tr>
+                        <tr>
+                            <td>年级：</td>
+                            <td>
+                                <input type="text" name="helpGrade" class="helpGrade">
+                            </td>
+                        </tr>
+                        <tr class="tishi" id="nianji" style="height: 20px;">
+                             <td class="nianji" style="font-size: 12px;"></td>
+                        </tr>
+                        <tr>
+                            <td>身份证号：</td>
+                            <td>
+                                <input type="text" name="helpIdnum" class="helpIdnum">
+                            </td>
+                        </tr>
+                        <tr class="tishi" id="idcard" style="height: 20px;">
+                             <td class="idcard" style="font-size: 12px;"></td>
+                        </tr>
+                        <tr>
+                            <td>联系方式：</td>
+                            <td>
+                                <input type="text" name="helpTel" class="helpTel">
+                            </td>
+                        </tr>
+                        <tr class="tishi" id="lianxi" style="height: 20px;">
+                             <td class="lianxi" style="font-size: 12px;"></td>
+                        </tr>
+                        <tr>
+                            <td>被感谢人：</td>
+                            <td>
+                                <input type="text" name="helpPosition" class="helpPosition">
+                            </td>
+                        </tr>
+                        <tr class="tishi" id="weizhi" style="height: 20px;">
+                             <td class="weizhi" style="font-size: 12px;"></td>
+                        </tr>
+                        <tr>
+                            <td>感谢事由：</td>
+                        </tr>
+                        <tr style="margin-left: 10px;">
+                            <td style="width: 400px;" rowspan="2" colspan="2"><textarea name="helpReason" id="helpReason" placeholder="不超过200字" rows="10" cols="70" width="300"></textarea></td>
+                            <script type="text/javascript" >CKEDITOR.replace('helpReason');</script>
+                        </tr>
+                    
+                    </table>
+                <input type="button" class="baoming-button" value="求助" style="border:none">
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 全局弹窗样式 -->
+<div class="mask">
+    <div class="mask-wrap"></div>
+    <div class="showtext">
+        <h1>提示</h1>
+
+        <p class="showsay">
+
+        </p>
+
+        <div class="close">关闭</div>
+    </div>
+</div>
+
+<div class="information-wrap" style="display: none">
+    <div class="information-bg"></div>
+    <div class="information">
+        <div class="information-title">
+            <a href="#" class="information-closed">x</a>
+
+            <h2>核实您的以下信息</h2>
+        </div>
+        <div class="information-content">
+        </div>
+    </div>
+</div>
+<script id="test" type="text/html">
+    {{each items as value i}}
+    <li>
+        <div style="float:left"><img src="{{value.tPicurl}}" style="width:120px;height:100px;"></div>
+        <div style="float:left;margin-left:20px;"><p>{{value.tTitle}}</p>
+            <!--<a href="{{value.thelpnews}}" style="font-size:18px;margin-bottom:10px;">{{value.tTitle}}</a>-->
+            <p>{{value.tThing}}</p>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script type="text/javascript" src="../js/iframe/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/iframe/art.js"></script>
+<script type="text/javascript" src="../js/connent/page.js"></script>
+
+<script type="text/javascript">
+    var tName = $(".tName").val();
+    var tStuid = $(".tStuid").val();
+    var tGrade = $(".tGrade").val();
+    var tIdentitycard = $(".tIdentitycard").val();
+    var tTel = $(".tTel").val();
+    var tTname = $(".tTname").val();
+    var tThing = $(".tThing").val();
+    $(document).ready(function () {
+        $(".baoming").click(function () {
+            //reset();
+            $(".baoming-content").show(400);
+            // reset();
+        })
+        $(".close-button").click(function () {
+            $(".baoming-content").hide(400);
+            //reset();
+        })
+        /*感谢分页请求js*/
+        page("/jjh/web/thankInfoServlet.do");
+        /*提交感谢*/
+
+        $(".baoming-button").click(function () {
+            var tName = $(".tName").val();
+            var tStuid = $(".tStuid").val();
+            var tGrade = $(".tGrade").val();
+            var tIdentitycard = $(".tIdentitycard").val();
+            var tTel = $(".tTel").val();
+            var tTname = $(".tTname").val();
+            var tThing = $(".tThing").val();
+            if (tName == "" || tStuid == "" || tGrade == "" || tIdentitycard == "" || tTel == "" || tTname == "") {
+                //alert("请填写基本信息");
+                $(".mask .showsay").html("请填写基本信息");
+                $(".mask").show();
+                return false;
+            } else {
+                alert("提交成功");
+                /*$(".mask .showsay").html("提交成功");
+                $(".mask").show();*/
+                submitform.submit();
+                $.post("/jjh/thank/addthank.do", {
+                    tName: tName,
+                    tStuid: tStuid,
+                    tGrade: tGrade,
+                    tIdentitycard: tIdentitycard,
+                    tTel: tTel,
+                    tTname: tTname,
+                    tThing: tThing
+                }, null)
+                $(".baoming-content").hide(400);
+                return true;
+            }
+        });
+        $(".close").on("click", function () {
+        if ($(".mask").attr("ok") === "yes") {
+            $(".mask").toggle(400);
+            location.reload()
+        } else {
+            $(".mask").toggle(400);
+        }
+    })
+          /* 验证*/
+         var Name_bool=false;
+         var xuehao_bool=false;
+         var nianji_bool=false;
+         var lianxi_bool=false;
+         var weizhi_bool=false;
+         var idcard_bool=false;
+        function checkform(id,main,td2,check){
+           // alert(reg.test(name.value));
+          //alert(main.val()=='');
+          if (main.val()=="") {
+             $(id).css('display','block');
+             $(td2).html('不能为空');
+             main.focus();
+             check = false;
+          }
+          else{
+             $(id).css('display','none');
+             check = true;
+          }
+        };
+        /*验证姓名*/
+        $('.helpName').blur(function(){
+            checkform('#name',$('.helpName'),'.name',Name_bool); 
+        });
+        /*验证学号*/
+        $('.helpStuid').blur(function(){
+            checkform('#xuehao',$('.helpStuid'),'.xuehao',xuehao_bool); 
+        });
+        /*验证年级*/
+        $('.helpGrade').blur(function(){
+            checkform('#nianji',$('.helpGrade'),'.nianji',nianji_bool); 
+        });
+        /* 验证联系方式*/
+        $('.helpTel').blur(function(){
+            checkform('#lianxi',$('.helpTel'),'.lianxi',lianxi_bool); 
+        });
+        /*验证位置*/
+        $('.helpPosition').blur(function(){
+            checkform('#weizhi',$('.helpPosition'),'.weizhi',weizhi_bool); 
+        });
+        /*验证身份证号*/
+        $('.helpIdnum').blur(function(){
+            var reg = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)+$/;
+            if ($('.helpIdnum').val()=='') {
+                $('#idcard').css('display','block');
+                $('.idcard').html('不能为空');
+                $('.helpIdnum').focus();
+            }else if(!reg.test($('.helpIdnum').val())){
+                $('#idcard').css('display','block');
+                $('.idcard').html('格式不对');
+                $('.helpIdnum').focus();
+            }
+            else{
+                $('#idcard').css('display','none')
+                idcard_bool = true;
+            }
+        });
+    })
+</script>
+<!--#include virtual="/jjh/web/public/need_deep.html" -->
+</body>
+
+</html>

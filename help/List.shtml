@@ -1,0 +1,130 @@
+
+<div name="winDataListButtons" class="toobar" style="padding: 5px 1px 5px">
+    <!--#include virtual="/system/getActions.do?module=volunteer"-->
+    <a class="sf-show easyui-linkbutton" data-options="iconCls:'icon-export',plain:true" onclick="exportData()">导入</a>
+    | 所属系统：<input class="easyui-combotree" name="system_id" width="120px" data-options="required:true,url:'/system/getSystem.do',onLoadSuccess:function(node,data){getCurrWin().find('[textboxname=system_id]').combotree('setValue', data[0]['id']);setTimeout(function(){setParam();refresh();},0);},method:'get',editable: false,valueField:'id',textField:'text',onSelect:function(){setTimeout(function(){setParam();refresh();},0);}"/>
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="searchShow(this)">更多查询..</a>
+</div>
+
+<table name="winDataList" class="datagrid" style="height: 100%;width: 100%" data-options="cache:false,autoRowHeight:false,pageSize:20,fitColumns:true,pagePosition:'bottom',striped:true,rownumbers:true,singleSelect:true,pagination:true,method:'get'">
+    <thead>
+    <tr>
+        <th data-options="field:'ck',checkbox:true"></th>
+        <th data-options="field:'helpName',align:'center',width:110">姓名</th>
+        <th data-options="field:'helpStuid',align:'center',width:120">学号</th>
+        <th data-options="field:'helpGrade',align:'center',width:110">年级</th>
+        <th data-options="field:'helpIdnum',align:'center',width:110">身份证号码</th>
+        <th data-options="field:'helpTel',align:'center',width:110">联系电话</th>
+        <th data-options="field:'helpReason',align:'center',width:110">申请事由</th>
+        <th data-options="field:'h_applytime',align:'center',width:110">申请时间</th>
+        <th data-options="field:'helpPosition',align:'center',width:110">地理位置</th>
+        <th data-options="field:'h_title',align:'center',width:110">显示标题</th>
+        <th data-options='field:"helpPicture",align:"center",width:110,formatter:function(value,rowData,index){
+            return "<a style=\"color:blue\" onclick=\"changeStatus("+rowData.h_id+")\"><上传图片></a>";
+        }'>图片管理</th>
+
+    </tr>
+    </thead>
+</table>
+
+<textarea name="winEditHtml" style="display: none;">
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding: 12px 12px 0 12px;">
+            <form name="obj" method="post" class="c-form">
+                <input type="hidden" name="h_id" value="0">
+                <input type="hidden" name="helpReason" id="helpReason"/>
+                <input type="hidden" id="option_type" name="option_type" value="add"><!--判断类型 必须包含-->
+                <table class="table">
+                    <tr>
+                        <td class="label-2">姓名：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" data-options="required:true" name="helpName"></td>
+                        <td class="label-2">年级：</td>
+                        <td class="value-2"><input  name="helpGrade" class="easyui-validatebox easyui-textbox" data-options="required:true"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">学号：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" data-options="required:true"  name="helpStuid"></td>
+                        <td class="label-2">身份证号码：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="helpIdnum" data-options="required:true" ></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">联系电话：</td>
+                        <td  class="value-3" ><input class="easyui-validatebox easyui-textbox" name="helpTel" data-options="required:true"/></td>
+                        <td class="label-2">申请事由：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="helpReason2" data-options="required:true" ></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">地理位置：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="helpPosition" data-options="required:true"></td>
+                        <td class="label-2">显示标题：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="h_title" data-options="required:true" ></td>
+                    </tr>
+                    <tr>
+                        <td class="value" colspan="4"><script id="container" name="helpReason" type="text/plain"></script></td>
+                    </tr>
+
+                </table>
+            </form>
+        </div>
+        <div class="c-w-t" data-options="region:'south'">
+            <#buttons/>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-close',plain:true" onclick="closeCurrWin()">关闭</a>
+        </div>
+    </div>
+
+     <script type="text/javascript">
+         var ue = UE.getEditor('container');
+     </script>
+
+    <script>
+        !function(){
+            var ue = UE.getEditor("container");
+            ue.ready(function() {
+                if($("#helpReason").val() == "show"){
+                    ue.setDisabled();
+                }
+                ue.setContent($("#helpReason").val());
+                $("#helpReason").remove();
+            });
+        }();
+        function showEdit(obj){
+            var ue = UE.getEditor("container");
+            ue.setEnabled();
+            var value=ue.getContentTxt();
+            $("#helpReason").val(value);
+/*            setVal(getObj(obj, "option_type", null), "edit");
+            var pp = $(obj).parent();
+            $(obj).parent().empty();
+            pp.append($("<a name=\"button_save\" class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-save',plain:true\" onclick=\"save()\">保存</a>")).append("<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-close',plain:true\" onclick=\"closeCurrWin()\">关闭</a>");
+            $.parser.parse(pp);
+            $("form td p").remove();
+            $("form").removeClass("hide");
+
+            if(getParentQuery().afterEdit){
+                getParentQuery().afterEdit();
+            }*/
+        }
+    </script>
+
+</textarea>
+<script>
+    !function(){
+        var module_id=getUrlParam('?<!--#echo var="QUERY_STRING"-->',"module_id");
+        listBind({
+            windowWidth:800,
+            windowHeight:500,
+            keyField:'h_id',
+            save:"/jjh/help/save.do",
+            show:"/jjh/help/show.do",
+            del: "/jjh/help/del.do",
+            search:[{field:'helpName',title:'姓名',c_dataType:'string'}],
+            listUrl: "/jjh/help/list.do?module_id="+25,
+            param:{}},true);
+    }();
+    function changeStatus(value){
+        openWinUrl(600, 320,'上传首页显示图片','/jjh/help/uploadIndex.do?h_id='+value,null,"ntc",null);
+    }
+</script>

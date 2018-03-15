@@ -1,0 +1,80 @@
+
+<div name="winDataListButtons" class="toobar" style="padding: 5px 1px 5px">
+    <!--#include virtual="/system/getActions.do?module=volunteer"-->
+    | 所属系统：<input class="easyui-combotree" name="system_id" width="120px" data-options="required:true,url:'/system/getSystem.do',onLoadSuccess:function(node,data){getCurrWin().find('[textboxname=system_id]').combotree('setValue', data[0]['id']);setTimeout(function(){setParam();refresh();},0);},method:'get',editable: false,valueField:'id',textField:'text',onSelect:function(){setTimeout(function(){setParam();refresh();},0);}"/>
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="searchShow(this)">更多查询..</a>
+</div>
+
+<table name="winDataList" class="datagrid" style="height: 100%;width: 100%" data-options="cache:false,autoRowHeight:false,pageSize:20,fitColumns:true,pagePosition:'bottom',striped:true,rownumbers:true,singleSelect:true,pagination:true,method:'get'">
+    <thead>
+    <tr>
+        <th data-options="field:'ck',checkbox:true"></th>
+        <th data-options="field:'volunteerName',align:'center',width:110">姓名</th>
+        <th data-options="field:'volunteerGrade',align:'center',width:120">年级</th>
+        <th data-options="field:'volunteerQualifications',align:'center',width:110">学历</th>
+        <th data-options="field:'volunteerAcademy',align:'center',width:110">学院</th>
+        <th data-options="field:'volunteerApplayTime',align:'center',width:110">申请时间</th>
+        <th data-options="field:'volunteerTime',align:'center',width:110">服务时间</th>
+        <th data-options="field:'volunteerFrequency',align:'center',width:110">服务次数</th>
+        <th data-options="field:'volunteerCondition',align:'center',width:110">服务情况</th>
+        <th data-options="field:'volunteerActivityName',align:'center',width:110">服务活动</th>
+    </tr>
+    </thead>
+</table>
+
+<textarea name="winEditHtml" style="display: none;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding: 12px 12px 0 12px;">
+            <form name="obj" method="post" class="c-form">
+                <input type="hidden" name="volunteerId" value="0">
+                <input type="hidden" id="option_type" name="option_type" value="add"><!--判断类型 必须包含-->
+                <table class="table">
+                    <tr>
+                        <td class="label-2">姓名：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" data-options="required:true" name="volunteerName"></td>
+                        <td class="label-2">年级：</td>
+                        <td class="value-2"><input  name="volunteerGrade" class="easyui-validatebox easyui-textbox" data-options="required:true"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">学历：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" data-options="required:true"  name="volunteerQualifications"></td>
+                        <td class="label-2">学院：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="volunteerAcademy" data-options="required:true" ></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">服务活动：</td>
+                        <td  class="value-3" ><input class="easyui-validatebox easyui-textbox" name="volunteerActivityName" data-options="required:true"/></td>
+                        <td class="label-2">服务时间：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="volunteerTime" data-options="required:true" ></td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">服务次数：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="volunteerFrequency" data-options="required:true"></td>
+                        <td class="label-2">服务情况：</td>
+                        <td class="value-2"><input class="easyui-validatebox easyui-textbox"  name="volunteerCondition" data-options="required:true" ></td>
+                    </tr>
+
+                </table>
+            </form>
+        </div>
+        <div class="c-w-t" data-options="region:'south'">
+            <#buttons/>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-close',plain:true" onclick="closeCurrWin()">关闭</a>
+        </div>
+    </div>
+</textarea>
+<script>
+    !function(){
+        var module_id=getUrlParam('?_=1464595051771',"module_id");
+        listBind({
+            windowWidth:800,
+            windowHeight:250,
+            keyField:'volunteerId',
+            save:"/jjh/volunteer/save.do",
+            show:"/jjh/volunteer/show.do",
+            del: "/jjh/volunteer/del.do",
+            search:[{field:'volunteerName',title:'姓名',c_dataType:'string'}],
+            listUrl: "/jjh/volunteer/list.do?module_id="+21,
+            param:{}},true);
+    }();
+</script>

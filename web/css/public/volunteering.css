@@ -1,0 +1,279 @@
+.wrapmain {
+    width: 100%;
+    position: relative;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+
+.wrapmain .bg-tip {
+    width: 990px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.wrapmain .bg {
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    width: 100%;
+}
+
+.mian {
+    width: 990px;
+    margin: 0 auto;
+    padding-top: 0px;
+    position: relative;
+    z-index: 2;
+}
+
+.context {
+    float: left;
+    padding-top: 48px;
+    padding-left: 0px;
+    width: 100%;
+    position: relative;
+}
+
+.context .title {
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.introuce p {
+    line-height: 30px;
+    font-size: 16px;
+}
+
+.baoming {
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+    margin-top: 20px;
+    background-color: #008149;
+    color: #ffffff;
+}
+
+.baoming-button {
+    display: block;
+    margin: auto;
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #008149;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.baoming-content {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+.baoming-data {
+    position: absolute;
+    left: 50%;
+    width: 450px;
+    margin-left: -225px;
+    height: 50%;
+    margin-top: 5%;
+    background-color: #fff;
+    z-index: 10000;
+    overflow: auto;
+}
+
+.baoming-title {
+    width: 433px;
+    height: 50px;
+    border-bottom: 1px solid #cccccc;
+    position: fixed;
+    background-color: #fff;
+}
+
+.baoming-neirong table {
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.baoming-neirong table tr {
+    text-align: right;
+    height: 40px;
+    font-size: 18px;
+}
+
+.baoming-neirong table tr input {
+    height: 20px;
+    width: 200px;
+}
+
+.newsContent{
+    overflow: hidden;
+}
+.newsContent ul {
+    margin-top: 20px;
+}
+
+.newsContent ul li {
+    float: left;
+    width: 200px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.newsContent ul li img {
+    width: 200px;
+    height: 180px;
+}
+
+.newsContent ul li p {
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.baoming-button-wrap{
+    width:100%;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+}
+.newlist{
+    width:100%;
+    margin-top:40px;
+}
+.newstitle{
+    width:100%;
+    height:40px;
+    line-height:40px;
+    border-bottom:1px solid #cccccc;
+}
+.newsContent ul li a:hover p{
+     color: #008149;
+}
+.pagecontrol{
+    text-align:center;
+    color:#b5b7b5;
+    padding-top:35px;
+}
+.pagecontrol a{
+    color:#b5b7b5;
+}
+.pagecontrol a:hover{
+    color:#5FAD59;
+}
+.pagecontrol span{
+    margin-left:15px;
+}
+.tishi{
+    color: red;
+    display:none;
+    font-size: 12px;
+}
+.baoming-neirong{
+    padding-top: 35px;
+}
+.tishi td{
+    padding-left: 35px;
+}
+#name{
+    display: none;
+}
+#cishu{
+    display: none;
+}
+#xueli{
+    display: none;
+}
+#Stime{
+    display: none;
+}
+#Ftime{
+    display: none;
+}
+#condition{
+    display: none;
+}
+#nianji{
+    display: none;
+}
+#huodong{
+    display: none;
+}
+#helpReason{
+    display: block;
+    margin-left: 0;
+}
+/* 弹框 */
+.mask{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0px;
+    left:0px;
+    z-index:99999999999;
+    display:none;
+}
+.mask-wrap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#000;
+    opacity:0.3;
+    z-index:999999999999;
+}
+.showtext{
+    width:340px;
+    height:120px;
+    margin:0 auto;
+    border:solid 1px #ddd;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-120px;
+    margin-top:-60px;
+    background-color:#fff;
+    z-index:9999999999999;
+}
+.showtext h1{
+    height:30px;
+    line-height:30px;
+    padding-left:20px;
+    border-bottom:solid 1px #ddd;
+    color:#2BB122;
+}
+.showtext .showsay{
+    height:41px;
+    text-align:center;
+    line-height:1.5;
+    padding-top:15px;
+    color:#2BB122;
+}
+.showtext .close{
+    width:50px;
+    line-height:30px;
+    text-align:center;
+    float:right;
+}
+.showtext .close:hover{
+    color:red;
+    cursor:pointer;
+}

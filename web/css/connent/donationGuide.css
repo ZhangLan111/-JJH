@@ -1,0 +1,464 @@
+/* ------------通用------------- */
+body{
+	 font-family: Microsoft Yahei;
+   
+}
+.clearfix{
+	clear: both;
+}
+
+.ma-wrap {
+	top: 0;
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	margin-left: -150px;
+	z-index: 999;
+	border: 3px solid #ddd;
+	background-color: #ffffff;
+}
+
+.ma-bg {
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	background-color: #c2fefa;
+	opacity: 0.5;
+	top: 0;
+}
+
+.ma-title {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: solid 1px #ddd;
+	text-align: center;
+	color: #2BB122;
+	font-size: 18px;
+}
+
+.ma-content {
+	width: 100%;
+	text-align: center;
+}
+
+.img {
+	margin: auto;
+	margin-top: 30px;
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	background-color: green;
+}
+
+.ma-close {
+	float: right;
+	margin-right: 10px;
+}
+
+.ma-close:hover {
+	cursor: pointer;
+	color: #000000;
+}
+
+/* ------------样式------------- */
+.smallbg{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+}
+.smallbg img{
+	width:100%;
+}
+.main{
+    width:100%;
+    position:relative;
+    background-color: #f3fbfb;
+    padding-bottom: 77px;
+    overflow: hidden;
+}
+.main-wrap{
+    position:relative;
+    z-index:1;
+    width:990px;
+    margin:0 auto;
+    overflow: hidden;
+}
+
+.main-bg{
+    width:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+    height: 654px;
+}
+
+p.index{
+	position:absolute;
+	top: 20px;
+    left: 20px;
+    font-size: 16.3px;
+    letter-spacing:3px;
+    color: white;
+}
+p.title{
+	position:absolute;
+	top:192px;
+    left:425px;
+    font-size: 30px;
+    color: white;
+}
+.donationDetail{
+	float: left;
+	margin: 300px 10px;
+	margin-bottom: 0px;
+	width: 390px;
+	min-height: 960px;
+	overflow: hidden;	
+}
+.donationDetail form{
+	margin-top: 20px;
+}
+.txtDescrip p{
+	line-height: 23px;
+	font-size: 14px;
+	color: #717b76;
+}
+p.detailTitle{
+	
+	font-size: 24px; 
+    color: #000000;
+}
+p.formTitle{
+	font-size: 20px;  
+    color: #000000;
+}
+form p{
+	float: right;
+	margin-right: 30px;
+	line-height: 50px;
+	font-size: 16px;   
+    color: #000000;
+}
+form input{
+	margin-left: 10px;
+	font-size: 16px;
+
+	
+}
+
+input[type="text"],input[type="number"]{
+	width: 174px;
+	height: 30px;
+	border-radius: 3px;
+	border: 1px #d5d6d6 solid;
+	outline: none;
+}
+input[type=number] {
+	-moz-appearance:textfield;
+}
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+form p.formTitle,p.remarks{
+	margin-right: 187px;
+}
+p.suitStyle{
+	display: inline-block;
+	margin-right: 16px;
+	width: 300px;
+}
+p.remarks{
+	font-weight: bold;
+}
+span.necessity{
+	color: red;
+}
+span.remarkDetail{
+	font-size: 12px;
+	color: #8c9091;
+}
+.suitStyle2{
+	width:480px;
+	margin-right: 0px;
+}
+p.submit{
+	margin-right:255px; 
+	width: 70px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	background-color: #000;
+	color: #b2b2b2;
+	border: 1px #d6d6d6 solid;
+	border-radius: 4px;
+	cursor:pointer;
+}
+p.submit:hover{
+	background-color:#028b5f;
+	color:#fff;
+}
+p.thanks{
+	width: 350px;
+	margin: 15px 35px;
+	line-height: 25px;
+	font-size: 14px;
+	color: #323232;
+}
+p.smallTitle{
+	margin-top: 40px;
+	font-size: 16px;
+   
+}
+p.suitStyle3{
+	margin-right: 90px;
+}
+.method{
+	margin: 20px 40px;
+}
+.method p{
+	font-size: 14px;
+	line-height: 38px;
+}
+.far{
+	margin-left: 80px;
+}
+.suitStyle4{
+	margin-right: 0px;
+}
+html,body{
+	height:100%;
+	width:100%;
+
+}
+.mask{
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0px;
+	left:0px;
+	z-index:99999999999;
+	display:none;
+}
+.mask-wrap{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:#000;
+	opacity:0.3;
+	z-index:999999999999;
+}
+.showtext{
+	width:240px;
+	height:120px;
+	margin:0 auto;
+	border:solid 1px #ddd;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-120px;
+	margin-top:-60px;
+	background-color:#fff;
+	z-index:9999999999999;
+}
+.showtext h1{
+	height:30px;
+	line-height:30px;
+	padding-left:20px;
+	border-bottom:solid 1px #ddd;
+	color:#2BB122;
+}
+.showtext .showsay{
+	height:41px;
+	text-align:center;
+	line-height:1.5;
+	padding-top:15px;
+	color:#2BB122;
+}
+.showtext .close{
+	width:50px;
+	line-height:30px;
+	text-align:center;
+	float:right;
+}
+.showtext .close:hover{
+	color:red;
+	cursor:pointer;
+}
+.tiptext{
+	float: right;
+	margin-top: 8px;
+}
+.option-jz{
+	width: 100%;
+	height: 28px;
+	margin-top: 40px;
+	border-bottom: 2px solid #008149;
+}
+.option-jz ul li{
+	float: left;
+	width: 104px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	background-color: #dbdada;
+	font-size: 18.67px;
+	margin-right:3px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-box-shadow: 2px 0px 2px #b5b4b4;/*firefox*/
+	-webkit-box-shadow: 2px 0px 2px #b5b4b4;/*safari或chrome*/
+	box-shadow:2px 0px 2px #b5b4b4;/*opera或ie9*/
+}
+.option-jz ul li:hover{
+	cursor: pointer;
+	background-color: #008149 !important;
+	color: #ffffff !important;
+	-moz-box-shadow: 2px 2px 2px #008149 !important;/*firefox*/
+	-webkit-box-shadow: 2px 2px 2px #008149 !important;/*safari或chrome*/
+	box-shadow:2px 2px 2px #008149 !important;/*opera或ie9*/
+}
+.option-active{
+	background-color: #008149 !important;
+	color: #ffffff !important;
+	-moz-box-shadow: 2px 2px 2px #008149 !important;/*firefox*/
+	-webkit-box-shadow: 2px 2px 2px #008149 !important;/*safari或chrome*/
+	box-shadow:2px 2px 2px #008149 !important;/*opera或ie9*/
+}
+.donationForm{
+	width: 380px;
+	display: none;
+}
+.donationForm table tr td{
+	height: 70px;
+	line-height: 20px;
+}
+.donationForm table tr.donationMoney td,.donationForm table tr.donationProject td,.donationForm table tr.donationWays td{
+	height: 40px;
+	line-height: 20px;
+}
+.donationForm .op-title{
+	width: 90px;
+	text-align: left;
+	font-size: 14.67px;
+}
+.donationForm input[type="text"],input[type="number"]{
+	width: 257px;
+	padding: 0px 5px;
+	height: 38px;
+	border:1px solid #979c9b;
+}
+.form-btn{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 13.34px;
+	margin-top: 35px;
+	background-color: #008149;
+	border: none;
+	color: #ffffff;
+}
+.form-btn:hover{
+	cursor: pointer;
+	background-color: #02714E;
+}
+
+
+.information-btn:hover{
+	cursor: pointer;
+	background-color: #02714E;
+}
+
+.project-sel{
+	float: left;
+	width: 90px;
+	height: 38px;
+	margin-left: 11px;
+	border-radius: 2px;
+	border:1px solid #979c9b;
+}
+.project-txt{
+	float: left;
+}
+.on {
+	display: block !important;
+}
+.information-bg{
+	width: 100%;
+	height: 1657px;
+	background: #c2fefa;
+	opacity: 0.5;
+	z-index: 999;
+	position:absolute;
+	top: 0px;
+	left: 0px;
+}
+.information{
+	width: 540px;
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	margin-left: -242.5px;
+	z-index: 999;
+	border:1px solid #73a08d;
+	background-color: #ffffff;
+}
+.information-title{
+	width: 100%;
+	height: 55px;
+	font-size: 18.67px;
+	text-align: center;
+	line-height: 55px;
+	background: url("../../img/index/login-title-bg.png") no-repeat;
+}
+.information-closed{
+	position: absolute;
+	right: 15px;
+	top: -12px;
+	color: #76817d;
+}
+.information-content{
+	width: 350px;
+	margin: auto;
+	margin-top: 24px;
+	padding-bottom:30px;
+}
+.information-content table{
+	font-size: 13.34px;
+	height: 25px;
+	line-height: 25px;
+}
+.information-btn{
+	width: 100%;
+	height: 40px;
+	margin-top: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 18.67px;
+	color: #ffffff;
+	background-color: #008149;
+}
+.information-btn：hover{
+	cursor: pointer;
+	background-color: #01653A;
+}
+.donationForm table tr td ul li{
+	float: left;
+	text-align: center;
+	width: 120px;
+	line-height: 20px;
+}
+tr.donationWays td {
+	display: inline-block;
+	width: 100px;
+}

@@ -1,0 +1,244 @@
+
+<div name="winDataListButtons" class="toobar" style="padding: 5px 1px 5px">
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-refresh',plain:true" onclick="refresh()">刷新</a>
+
+    <!--#include virtual="/system/getActions.do?module=vactivity"-->
+    | 所属系统：<input class="easyui-combotree" name="system_id" width="120px" data-options="required:true,url:'/system/getSystem.do',onLoadSuccess:function(node,data){getCurrWin().find('[textboxname=system_id]').combotree('setValue', data[0]['id']);setTimeout(function(){setParam();refresh();},0);},method:'get',editable: false,valueField:'id',textField:'text',onSelect:function(){setTimeout(function(){setParam();refresh();},0);}"/>
+    <a class="easyui-vactivitybutton" data-options="iconCls:'icon-search',plain:true" onclick="searchShow(this)">更多查询..</a>
+</div>
+
+<table name="winDataList" class="datagrid" style="height: 100%;width: 100%" data-options="cache:false,autoRowHeight:false,pageSize:20,fitColumns:true,pagePosition:'bottom',striped:true,rownumbers:true,singleSelect:true,pagination:true,method:'get'">
+    <thead>
+    <tr>
+        <th data-options="field:'ck',checkbox:true"></th>
+        <th data-options="field:'vactivityName',align:'center',width:130">活动名</th>
+        <th data-options="field:'vactivityBeginTime',align:'left',width:140">创建活动时间</th>
+        <th data-options="field:'vactivityEndTime',align:'center',width:140">活动截止时间</th>
+        <th data-options="field:'vactivityState',align:'center',width:130">是否显示到前端页面</th>
+        <th data-options='field:"vactivityIntroduce",align:"center",width:110,formatter:function(value,rowData,index){
+            return "<a style=\"color:blue\" onclick=\"showRow1()\"><改写></a>";
+        }'>改写重邮志愿活动介绍</th>
+        <th data-options='field:"vactivityPic",align:"center",width:110,formatter:function(value,rowData,index){
+            return "<a style=\"color:blue\" onclick=\"changeStatus("+rowData.vactivityId+")\"><上传图片></a>";
+        }'>活动图片</th>
+    </tr>
+    </thead>
+</table>
+
+<textarea name="winEditHtml" style="display: none;">
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding: 12px 12px 0 12px;">
+            <form name="obj" method="post" class="c-form">
+                <input type="hidden" name="vactivityId" value="0">
+                <input type="hidden" name="system_id" id="system_id">
+                <input type="hidden" name="module_id" value="77">
+                <input type="hidden" id="option_type" name="option_type" value="add"><!--判断类型 必须包含-->
+                <table class="table">
+                    <tr>
+                        <td class="label-2">活动名：</td>
+                        <td class="value-2"><input class="easyui-textbox easyui-validatebox" data-options="required:true" name="vactivityName"></td>
+                        <td class="label-2">是否显示到前端页面：</td>
+                        <td class="value-2">
+                            <select class="easyui-combobox easyui-validatebox" data-options="editable:false" name="vactivityState">
+                                <option value="否">否</option>
+                                <option value="是">是</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-2">活动截止时间：</td>
+                        <td class="value-2"><input class="easyui-datetimebox" name="vactivityEndTime"
+                               data-options="required:true,showSeconds:false" value="3/4/2010 2:3" style="width:150px">
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+        </div>
+        <div class="c-w-t" data-options="region:'south'">
+           <!-- <#buttons/>-->
+            <a name="button_save" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="save()">保存</a>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-close',plain:true" onclick="closeCurrWin()">关闭</a>
+        </div>
+    </div>
+
+    <!--<script>
+        function showEdit(obj){
+            var ue = UE.getEditor("container");
+            ue.setEnabled();
+            setVal(getObj(obj, "option_type", null), "edit");
+            var pp = $(obj).parent();
+            $(obj).parent().empty();
+            pp.append($("<a name=\"button_save\" class=\"easyui-vactivitybutton\" data-options=\"iconCls:'icon-save',plain:true\" onclick=\"save()\">保存</a>")).append("<a class=\"easyui-vactivitybutton\" data-options=\"iconCls:'icon-close',plain:true\" onclick=\"closeCurrWin()\">关闭</a>");
+            $.parser.parse(pp);
+            $("form td p").remove();
+            $("form").removeClass("hide");
+
+            if(getParentQuery().afterEdit){
+                getParentQuery().afterEdit();
+            }
+        }
+    </script>-->
+</textarea>
+<textarea name="winEditIntroduce" id="introtext" style="display: none;">
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="/static/system/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" style="padding: 12px 12px 0 12px;">
+            <form name="obj" method="post" class="c-form">
+                <input type="hidden" name="volunteerIntroduceContext" id="volunteerIntroduceContext">
+                <input type="hidden" id="option_type1" name="option_type" value="edit">
+                <table class="table">
+                    <tr>
+                        <td class="value" colspan="4"><script id="container" name="volunteerIntroduceContext" type="text/plain"></script></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="c-w-t" data-options="region:'south'">
+            <#buttons/>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-close',plain:true" onclick="closeCurrWin()">关闭</a>
+        </div>
+    </div>
+    <script>
+
+        !function(){
+            var ue = UE.getEditor("container");
+            ue.ready(function() {
+                if($("#option_type1").val() == "show"){
+                    ue.setDisabled();
+                }
+                ue.setContent($("#volunteerIntroduceContext").val());
+                $("#volunteerIntroduceContext").remove();
+            });
+        }();
+        function showEdit(obj){
+            var ue = UE.getEditor("container");
+            ue.setEnabled();
+            setVal(getObj(obj, "option_type1", null), "edit");
+            var pp = $(obj).parent();
+            $(obj).parent().empty();
+            pp.append($("<a name=\"button_save\" class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-save',plain:true\" onclick=\"introduce()\">保存</a>")).append("<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-close',plain:true\" onclick=\"closeCurrWin()\">关闭</a>");
+            $.parser.parse(pp);
+            $("form td p").remove();
+            $("form").removeClass("hide");
+
+            if(getParentQuery().afterEdit){
+                getParentQuery().afterEdit();
+            }
+        }
+    </script>
+</textarea>
+<script>
+    function showRow1(type, title, gridName) {
+        type='edit';
+        title='编辑';
+        if (runing){return;}
+        runing=true;
+        if (!type) {type = "show";}
+        if (!title) {title = "查看";}
+        if (!gridName)gridName = "winDataList";
+
+        var table = getCurrWin().find("[name=" + gridName + "]");
+        var row;
+        if (table.hasClass("treegrid")) {
+            row = table.treegrid("getSelections");
+        } else if (table.hasClass("datagrid")) {
+            row = table.datagrid("getSelections");
+        }
+        if (!row || row.length == 0) {
+            $.messager.alert("提示", "请先选择一行再" + title + "！");
+            runing=false;
+            return;
+        }
+        if (row.length > 1){
+            $.messager.alert("提示", "只能选择一行进行操作！");
+            return;
+        }
+        var query = getCurrQuery();
+        query.param['option_type'] =  type;
+        var param="";
+        $.each(query.param,function(index,elem){
+            param=param+"&"+index+"="+elem;
+        });
+        loadData(query.getActivityIntroduce + "?id=" + row[0][query.keyField] + param, function (result) {
+            retMessage(result, function () {
+                        var temp= getCurrWin().find("[name=winEditIntroduce]").val().replace("<#buttons/>", ((type == "show") ? getButtons(result["privilege"]) : "<a name=\"button_save\" class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-save',plain:true\" onclick=\"introduce()()\">保存</a>\n"));
+                        if(query.beforShow){temp=query.beforShow(type,temp,result);if(temp==null)return;}
+                        openWin(query.windowWidth1, query.windowHeight1, title, temp, null, null, function (obj) {
+                            onLoad(obj, type, result, function(){
+                                if(type === "edit"){
+                                    if(query.afterEdit)query.afterEdit(result);
+                                } else if(type === "show") {
+                                    if(query.afterShow)query.afterShow(result);
+                                }
+                            });
+                        });
+                    });
+        });
+        runing=false;
+    }
+    !function(){
+        var module_id=getUrlParam('?<!--#echo var="QUERY_STRING"-->',"module_id");
+        listBind({
+            windowWidth1:800,
+            windowHeight1:500,
+            windowWidth:800,
+            windowHeight:240,
+            keyField:'vactivityId',
+            save:"/jjh/vactivity/save.do?module_id="+77,
+            show:"/jjh/vactivity/show.do",
+            del: "/jjh/vactivity/del.do",
+            writeIntroduce:"/jjh/vactivity/updateIntroduce.do",
+            getActivityIntroduce:"/jjh/vactivity/getActivityIntroduce.do",
+            search:[{field:'vactivityName',title:'活动名',c_dataType:'string'}//c_range: ['测试值', '测试值2', '测试值3']
+
+            ],
+            listUrl: "/jjh/vactivity/list.do?module_id="+77,
+            param:{},
+            afterAdd:function(){
+                $.ajax({
+                    url:"/system/getUserName.do",
+                    dataType:"json",
+                    success:function(data){
+                        var win=getCurrWin();
+                        win.find('[name=puser_name]').val(data.puser_name);
+                        win.find('[name=system_name]').val(data.system_name);
+                        win.find('[name=system_id]').val(data.system_id);
+                        win.find('[name=puser_name]').parent().append("<p>"+data.puser_name+"</p>");
+                        win.find('[name=puser_time]').parent().append("<p>"+data.puser_time+"</p>");
+                        win.find('[name=system_name]').parent().append("<p>"+data.system_name+"</p>");
+                    }
+                });
+            },
+            afterEdit:function(){
+                $.ajax({
+                    url:"/system/getUserName.do",
+                    dataType:"json",
+                    success:function(data){
+                        var win=getCurrWin();
+                        win.find('[name=puser_name]').val(data.puser_name);
+                        win.find('[name=system_name]').val(data.system_name);
+                        win.find('[name=system_id]').val(data.system_id);
+                        win.find('[name=puser_name]').parent().append("<p>"+data.puser_name+"</p>");
+                        win.find('[name=puser_time]').parent().append("<p>"+data.puser_time+"</p>");
+                        win.find('[name=system_name]').parent().append("<p>"+data.system_name+"</p>");
+                    }
+                });
+            }
+        },true);
+    }();
+    function changeStatus(value){
+        openWinUrl(600, 320,'上传首页显示图片','/jjh/vactivity/uploadIndex.do?vactivityId='+value,null,"ntc",null);
+    }
+    /*function writeIntroduce(value){
+        openWinUrl(600, 320,'改写重邮志愿活动介绍','/system/vactivity/writeIntroduce.do?vactivityId='+value,null,"ntc",null);
+    }*/
+</script>
+
+
+

@@ -1,0 +1,153 @@
+.mian{
+	width:100%;
+	position:relative;
+}
+.mian-wrap{
+	width:990px;
+	margin:0 auto;
+}
+.slideimg{
+	position:relative;
+	z-index:2;
+}
+.slideimg img{
+	width:100%;
+}
+.slideimg .link{
+	position:absolute;
+	left:0px;
+	top:5px;
+	color: #fff;
+    font-size: 17px;
+    font-weight:400;
+}
+.mian .bg{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0px;
+	z-index:1;
+}
+.mian .title{
+	text-align:center;
+	position:absolute;
+	font-size:24px;
+	line-height:80px;
+	bottom:0px;
+	width:100%;
+	color:#fff;
+}
+.index{
+	position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 16.3px;
+    letter-spacing: 3px;
+    color: white;
+}
+.title-about{
+    font-size: 30px;
+    color: white;
+    z-index: 99;
+    text-align:center;
+    width:100%;
+    position:relative;
+    padding-top: 18px;
+}
+.jieshao{
+	position:relative;
+	z-index:2;
+	margin-top:20px;
+}
+.jieshao h4{
+	font-size: 22px;
+    color: #112302;
+	margin-bottom:20px;
+}
+.jieshao-text{
+	padding-left:120px;
+	border-bottom:solid 1px #eee;
+	padding-bottom:50px;
+	margin-bottom:50px;
+}
+.jieshao-text-title{
+	width:600px;
+	line-height:1.8;
+}
+.jieshao-text h5{
+	margin:20px 0;
+	font-size: 18px;
+}
+.jieshao-text p{
+	line-height:2.0;
+	font-size: 16px;
+	color:#323232;
+}
+.people{
+	position:relative;
+	z-index:2;
+	overflow:hidden;
+	padding-left: 117px;
+}
+.people img{
+	float:left;
+}
+.peopele-text{
+	float:left;
+	width:586px;
+	margin-left: 31px;
+}
+.peopele-text h3,.peopele-text h5{
+	font-size:16px;
+	color:#323232;
+	margin-bottom:20px;
+}
+.peopele-text p{
+	line-height:2.0;
+	text-indent:30px;
+	font-size:14px;
+}
+.peopele-text .name{
+	text-align:right;
+}
+.mackup{
+	width:100%;
+	margin:0 auto;
+	background-color:#f7f7f7;
+	padding-top: 50px;
+	padding-bottom:50px;
+
+}
+.mackup-wrap{
+	width:990px;
+	margin:0 auto;
+}
+.mackup-wrap h1{
+	font-size:24px;
+	color:#1b3405;
+	margin:20px 0;
+}
+.mackup table{
+	width:1000px;
+	margin:0px auto;
+}
+.mackup tr{
+	text-align:left;
+	height:36px;
+	width:1000px;
+}
+.mackup td,th{
+	vertical-align:bottom;
+}
+.mackup th{
+	font-size: 18px;
+	font-weight:bold;
+}
+.mackup td{
+	font-size: 16px;
+	text-align:left;
+}
+.mackup .zhiwei{
+	width:395px;
+}
